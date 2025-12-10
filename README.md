@@ -34,3 +34,35 @@ Minimal Solidity examples demonstrating how vulnerabilities are exploited.
 ---
 
 ## 📁 Repository Structure
+
+audits/                 → Sample audit reports
+exploits/               → Solidity PoC exploit contracts
+simulations/            → Step-by-step attack simulations
+hardhat/                → Hardhat config & scripts
+
+---
+
+## 🛠️ Tools & Methodology
+
+- Hardhat  
+- Foundry  
+- Slither  
+- Echidna  
+- Tenderly  
+- Manual, line-by-line review  
+
+---
+
+## 🤝 Purpose
+
+This repository demonstrates:
+- My audit workflow  
+- My ability to detect high-impact vulnerabilities  
+- My exploit development skills  
+- My capability to simulate attacks and propose fixes  
+
+---
+
+## 📬 Contact  
+**0xBerberSec**  
+DeFi Security Researcher • Smart Contract Auditor  
