@@ -70,3 +70,10 @@ This analysis focuses on protocol invariants, state consistency, and fork-based 
 
 This research demonstrates practical fork-based behavioral analysis of core DeFi lending logic and invariant validation in production contracts.
 
+## Reproducibility
+
+Tested on Base mainnet fork using Foundry.
+
+forge test --fork-url <BASE_RPC> --match-contract BorrowAllowedDirtyStateFork
+
+
