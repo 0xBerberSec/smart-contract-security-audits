@@ -54,7 +54,7 @@ contract BorrowAllowedDirtyStateFork is Test {
         assertEq(
             assetsAfter.length,
             1,
-            "market entry should not persist on failed borrow"
+            "market entry persisted after failed borrow"
         );
 
         assertEq(

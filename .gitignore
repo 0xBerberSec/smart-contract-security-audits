@@ -1,0 +1,21 @@
+# Tooling
+node_modules/
+out/
+cache/
+broadcast/
+coverage/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Generated
+*.log
+*.tmp
