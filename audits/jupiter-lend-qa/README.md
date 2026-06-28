@@ -1,13 +1,14 @@
-# Jupiter Lend - Closed Branch Lifecycle Invariant Weakness
+# Jupiter Lend - QA Research
 
 [Back to portfolio](../../README.md)
 
-## Finding
+## Report
 
 **Title:** Closed Branch Can Be Reassigned as Active Without Lifecycle Validation  
 **Contest:** [Jupiter Lend](https://code4rena.com/audits/2026-02-jupiter-lend/dashboard)  
 **Submission:** [S-757](https://code4rena.com/audits/2026-02-jupiter-lend/submissions/S-757)  
-**Severity:** QA / Low  
+**Type:** Code4rena QA Report  
+**Status:** Public QA Research  
 **Researcher:** 0xBerberSec
 
 ## Summary
@@ -77,7 +78,7 @@ Security significance:
 - Reduces defensive guarantees around liquidation state transitions
 - Increases future maintenance risk in a complex branch, absorb, merge, and debt-factor system
 
-This is best categorized as a QA / Low severity issue rather than a confirmed economic exploit.
+This is categorized here as QA research rather than a validated finding.
 
 ## Recommendation
 
