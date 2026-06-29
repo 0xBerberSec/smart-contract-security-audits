@@ -4,7 +4,7 @@ Smart contract security portfolio by 0xBerberSec.
 
 Focused on DeFi, cross-chain security, invariant analysis, and proof-of-concept driven vulnerability research.
 
-**Current portfolio:** 1 validated Code4rena Low finding + public QA research.
+**Current portfolio:** 1 validated Code4rena Low finding + public QA and independent security research.
 
 ## Validated Findings
 
@@ -12,11 +12,12 @@ Focused on DeFi, cross-chain security, invariant analysis, and proof-of-concept 
 | --- | --- | --- | --- | --- |
 | LayerZero Stellar Endpoint | Code4rena | Low | Validated | [Report](./audits/layerzero-stellar-endpoint/README.md) |
 
-## QA / Research
+## Independent Security Research
 
 | Protocol | Type | Status | Report |
 | --- | --- | --- | --- |
 | Jupiter Lend | Code4rena QA Report | Public QA Research | [Report](./audits/jupiter-lend-qa/README.md) |
+| GMX Synthetics | Independent Security Research | Public independent research | [Report](./audits/gmx-disabled-integration-relay-bypass/README.md) |
 
 ## Repository Structure
 
@@ -27,6 +28,9 @@ audits/
     PoC.md
   jupiter-lend-qa/
     README.md
+  gmx-disabled-integration-relay-bypass/
+    README.md
+    PoC.md
 docs/
   INDEX.md
 ```
