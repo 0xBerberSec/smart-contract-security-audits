@@ -6,6 +6,14 @@ Focused on DeFi, cross-chain security, invariant analysis, and proof-of-concept 
 
 **Current portfolio:** 1 validated Code4rena Low finding + public QA and independent security research.
 
+## Portfolio Snapshot
+
+| Category | Count | Scope |
+| --- | ---: | --- |
+| Validated findings | 1 | Code4rena validated Low |
+| QA research | 1 | Public Code4rena QA report |
+| Independent security research | 1 | Public PoC-driven research |
+
 ## Validated Findings
 
 | Protocol | Platform | Severity | Status | Report |
@@ -33,7 +41,16 @@ audits/
     PoC.md
 docs/
   INDEX.md
+  METHODOLOGY.md
+  POC_STANDARD.md
+  SEVERITY_AND_CLAIMS.md
 ```
+
+## Research Standards
+
+- [Methodology](./docs/METHODOLOGY.md)
+- [PoC Standard](./docs/POC_STANDARD.md)
+- [Severity and Claims](./docs/SEVERITY_AND_CLAIMS.md)
 
 ## Skills
 

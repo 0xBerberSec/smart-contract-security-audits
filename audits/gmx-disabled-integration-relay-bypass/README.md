@@ -104,6 +104,14 @@ This report does not claim:
 - impact without user signatures;
 - external contest ruling.
 
+## Limitations
+
+This research depends on a threat model where a user signs fresh relay approvals after an integration has been disabled, and where the subaccount or integration path is controlled by an attacker.
+
+The report does not show arbitrary takeover of unrelated accounts. It also does not claim that all subaccount integrations are unsafe. The demonstrated issue is narrower: the disabled-integration guard does not bind to the fresh signed `integrationId`, allowing the tested relay onboarding and rearming path to continue despite the intended kill-switch.
+
+The UI fee and affiliate reward impacts are demonstrated in the local GMX Synthetics test environment. They are presented as reproducible security research, not as an externally confirmed production incident.
+
 ## Proof of Concept
 
 The PoC uses the GMX Synthetics test suite and focuses on four behaviors:

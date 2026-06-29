@@ -15,3 +15,9 @@
 
 - [LayerZero Stellar Endpoint PoC](../audits/layerzero-stellar-endpoint/PoC.md)
 - [GMX Disabled Integration Relay Bypass PoC](../audits/gmx-disabled-integration-relay-bypass/PoC.md)
+
+## Research Standards
+
+- [Methodology](./METHODOLOGY.md)
+- [PoC Standard](./POC_STANDARD.md)
+- [Severity and Claims](./SEVERITY_AND_CLAIMS.md)
