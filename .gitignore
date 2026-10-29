@@ -19,3 +19,10 @@ Thumbs.db
 # Generated
 *.log
 *.tmp
+
+# Private review and fork output
+private-review/
+reproductions/**/reports/
+
+# Held local preparation; excluded from the release selection
+/reproductions/origin-curve-usdc/

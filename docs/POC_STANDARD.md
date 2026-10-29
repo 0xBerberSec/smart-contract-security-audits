@@ -4,17 +4,22 @@
 
 Every public PoC should make the claim easier to verify, not harder to trust.
 
+This standard describes a future authorized release. [No runnable protocol PoC is included in the current selection](../reproducible-pocs/README.md).
+
 ## Required Elements
 
 A PoC should include:
 
 - protocol and component under test;
+- exact source revision, patch, toolchain and dependency provenance;
 - test file or patch location;
 - exact command used to run the test;
 - expected result;
 - observed result;
 - what the PoC proves;
 - what the PoC does not prove.
+- actor privileges, mocks, fixture mutations and relevant fork metadata;
+- a control case and the basis for technical disclosure.
 
 ## Preferred Structure
 
