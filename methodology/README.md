@@ -40,8 +40,12 @@ Audit-OS is my working environment for scope notes, architecture maps, invariant
 
 I use **Codex as research assistance** for code navigation, analysis and drafting tests. Suggestions and generated code require source review and technical verification. An AI explanation is not a test result, a generated PoC is not a successful execution, and neither establishes independent validation.
 
+## Executable example
+
+The [original Refund Escrow lab](../educational-demos/refund-escrow/README.md) maps this workflow to code: a backing invariant, callback hypothesis, targeted experiment, control cases, economic attribution and correction. Its [actual execution record](../educational-demos/refund-escrow/EVIDENCE.md) includes a passing default suite, a deliberately failing vulnerable safety assertion and a bounded fixed-version invariant campaign. The [research-process page](../educational-demos/refund-escrow/RESEARCH_PROCESS.md) states Codex's contribution and the verification boundary. This is a teaching artifact, not an audit finding on a third-party protocol.
+
 ## Public evidence
 
-The [Injective result](../validated-findings/injective-peggy-bridge/README.md) is the externally verified outcome presented here. The investigation overviews explain methods without disclosing the underlying private technical evidence; they do not imply those techniques produced the Injective finding. Detailed studies and runnable protocol PoCs remain withheld pending disclosure review.
+The [Injective result](../validated-findings/injective-peggy-bridge/README.md) is the externally verified outcome presented here. The investigation overviews explain methods without disclosing the underlying private technical evidence; they do not imply those techniques produced the Injective finding. Detailed third-party studies and runnable protocol exploits remain withheld pending disclosure review; the independently created teaching example is available above.
 
 [Research workflow](workflow.md) · [Finding validation](validation.md) · [Research tools](../research-tools-testing/README.md) · [Portfolio](../README.md)

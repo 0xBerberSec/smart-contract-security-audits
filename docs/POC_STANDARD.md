@@ -4,7 +4,7 @@
 
 Every public PoC should make the claim easier to verify, not harder to trust.
 
-This standard describes a future authorized release. [No runnable protocol PoC is included in the current selection](../reproducible-pocs/README.md).
+This standard describes a future authorized release. [An educational reproduction is available; third-party protocol exploits remain withheld](../reproducible-pocs/README.md).
 
 ## Required Elements
 

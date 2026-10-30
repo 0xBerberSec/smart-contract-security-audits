@@ -2,6 +2,7 @@
 
 | Class | Required basis | Appropriate claim |
 | --- | --- | --- |
+| Educational demonstration | Original synthetic protocol and actual local execution | Explain the known vulnerability class and test scope; no third-party discovery or contest credit |
 | Officially validated finding | Attributable external ruling or official result | State the exact accepted outcome and source |
 | Independent finding with local evidence | Identifiable test, setup and result supporting a specific behavior | State the demonstrated behavior and prerequisites; no external endorsement |
 | Historical documented result | A saved execution record or a clearly identified historical report | Label reported vs raw evidence; do not imply a fresh rerun |

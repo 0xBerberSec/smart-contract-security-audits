@@ -8,7 +8,7 @@ For a non-sensitive factual correction or broken link, a GitHub issue or pull re
 
 ## Scope
 
-This selection contains an official competition outcome, audit methodology, testing practices and generic investigation overviews. No runnable protocol PoC is included. See the [evidence register](docs/EVIDENCE.md) for the exact claims and their limits.
+This selection contains an official competition outcome, methodology, investigation overviews and an original educational lab with deliberately vulnerable code. Run that lab locally only; do not deploy it or deposit real funds. It is separate from third-party protocol discoveries. See the [evidence register](docs/EVIDENCE.md) for exact claims and limits.
 
 It does not operate production systems or hold user funds.
 

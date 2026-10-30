@@ -1,0 +1,33 @@
+No files changed, compilation skipped
+
+Ran 12 tests for test/RefundEscrow.t.sol:RefundEscrowTest
+[PASS] testFuzz_fixedPreservesBacking(uint96,uint96) (runs: 256, μ: 348622, ~: 358957)
+[PASS] testFuzz_vulnerableCanBreakBacking(uint96) (runs: 256, μ: 385881, ~: 385881)
+[PASS] test_counter_noCallbackKeepsVulnerablePoolSolvent() (gas: 316822)
+[PASS] test_counter_noOtherDepositorMeansNoExtractableSurplus() (gas: 304080)
+[PASS] test_counter_normalEOARefundKeepsVulnerablePoolSolvent() (gas: 53733)
+[PASS] test_counter_uncreditedCallerCannotRefund() (gas: 41439)
+[PASS] test_fixedCannotConsumeCreditTwice() (gas: 53836)
+[PASS] test_fixedRejectingReceiverRestoresCreditOnRevert() (gas: 193586)
+[PASS] test_fixedRejectsEmptyDeposit() (gas: 8244)
+[PASS] test_fixedRejectsNestedRefundButPaysOriginalCredit() (gas: 361060)
+[PASS] test_fixedVictimCanStillExitAfterAttemptedAttack() (gas: 370800)
+[PASS] test_vulnerableCallbackConsumesSameCreditTwice() (gas: 388681)
+Suite result: ok. 12 passed; 0 failed; 0 skipped; finished in 35.76ms (61.67ms CPU time)
+
+Ran 1 test for test/FixedInvariant.t.sol:FixedSolvencyInvariant
+[PASS] invariant_balanceCoversCredits() (runs: 128, calls: 8192, reverts: 0)
+
+╭---------------+----------+-------+---------+----------╮
+| Contract      | Selector | Calls | Reverts | Discards |
++=======================================================+
+| RefundHandler | attack   | 2697  | 0       | 0        |
+|---------------+----------+-------+---------+----------|
+| RefundHandler | deposit  | 2742  | 0       | 0        |
+|---------------+----------+-------+---------+----------|
+| RefundHandler | refund   | 2753  | 0       | 0        |
+╰---------------+----------+-------+---------+----------╯
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 548.68ms (531.22ms CPU time)
+
+Ran 2 test suites in 562.02ms (584.44ms CPU time): 13 tests passed, 0 failed, 0 skipped (13 total tests)

@@ -15,6 +15,10 @@ My strongest recurring themes are DeFi accounting, authorization boundaries and 
 | Invariant / fuzz harness work | Extending actions and accounting assertions | Short smoke runs without useful corpus growth are not deep coverage |
 | Codex | Assistance with navigation, reasoning and test drafts | Generated output requires verification |
 
+## Inspect an executed example
+
+The [Refund Escrow lab](../educational-demos/refund-escrow/README.md) supplies source, a callback harness, counter-tests, a correction, fuzz inputs, a stateful actor model and actual run artifacts. It provides concrete evidence of local Foundry test construction and interpretation on a small synthetic system. Its limited scope is distinct from experience with complex third-party protocols.
+
 ## Scope of experience
 
 I have investigated vault, LP, reward, lending and derivatives accounting questions. This portfolio does not claim completed client audits across all researched protocols, a history of private mandates, formal verification expertise or comprehensive fuzzing coverage.

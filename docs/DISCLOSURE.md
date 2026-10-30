@@ -1,6 +1,6 @@
 # Disclosure Policy
 
-This selection publishes the official Injective outcome and generic descriptions of research practice. It does not publish unresolved technical findings, private source material, executable protocol PoCs or private execution traces.
+This selection publishes the official Injective outcome, generic descriptions of research practice and an original deliberately vulnerable educational lab. The lab is independent of private findings and is intended for local tests only. Unresolved third-party technical findings, private source, protocol exploits and private execution traces remain withheld.
 
 Technical material requires a review of the exact source revision, original report, applicable program terms, third-party rights, remediation/publication status and authorization for the content being released. A competition result or a previous self-authored publication does not substitute for that basis.
 
