@@ -18,4 +18,6 @@ A control removes the suspected precondition or changes one variable at a time. 
 
 This illustrates economic attribution and false-positive rejection. It publishes no amounts, transactions or exploit sequence and claims no new technical result. This page describes a method; it is not independently verifiable execution evidence.
 
+For a separate executable teaching example of the workflow, see the [Refund Escrow lab](../educational-demos/refund-escrow/README.md). It is independent of this withheld study.
+
 [All investigation overviews](README.md) · [Testing approach](../research-tools-testing/testing.md) · [Portfolio](../README.md)

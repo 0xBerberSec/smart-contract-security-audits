@@ -11,4 +11,6 @@ The pages below are **generic methodological overviews**, based on themes in my 
 
 The underlying technical dossiers remain withheld until their disclosure basis is established. No protocol-specific test counts, success claims or private references are introduced here.
 
+A separate [original educational lab](../educational-demos/refund-escrow/README.md) makes the workflow executable without releasing any of the underlying private cases.
+
 [Audit methodology](../methodology/README.md) · [Evidence policy](../docs/SEVERITY_AND_CLAIMS.md) · [Portfolio](../README.md)

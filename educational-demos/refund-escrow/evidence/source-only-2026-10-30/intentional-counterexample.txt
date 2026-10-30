@@ -1,0 +1,50 @@
+Compiling 4 files with Solc 0.8.24
+Solc 0.8.24 finished in 142.78ms
+Compiler run successful!
+
+Ran 1 test for counterexamples/VulnerableSolvency.t.sol:VulnerableSolvencyCounterexample
+[FAIL: INVARIANT_BROKEN: underbacked credits] test_invariantBalanceCoversCreditsAfterRefund() (gas: 540293)
+Traces:
+  [540293] VulnerableSolvencyCounterexample::test_invariantBalanceCoversCreditsAfterRefund()
+    ├─ [107553] → new VulnerableRefundEscrow@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 537 bytes of code
+    ├─ [0] VM::deal(0x00000000000000000000000000000000000A11cE, 4000000000000000000 [4e18])
+    │   └─ ← [Return]
+    ├─ [0] VM::prank(0x00000000000000000000000000000000000A11cE)
+    │   └─ ← [Return]
+    ├─ [22415] VulnerableRefundEscrow::deposit{value: 4000000000000000000}()
+    │   └─ ← [Stop]
+    ├─ [0] VM::deal(VulnerableSolvencyCounterexample: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000 [1e18])
+    │   └─ ← [Return]
+    ├─ [191714] → new ReentrantRefundReceiver@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 956 bytes of code
+    ├─ [135166] ReentrantRefundReceiver::run{value: 1000000000000000000}(1)
+    │   ├─ [22415] VulnerableRefundEscrow::deposit{value: 1000000000000000000}()
+    │   │   └─ ← [Stop]
+    │   ├─ [56467] VulnerableRefundEscrow::refund()
+    │   │   ├─ [49052] ReentrantRefundReceiver::receive{value: 1000000000000000000}()
+    │   │   │   ├─ [7716] VulnerableRefundEscrow::refund()
+    │   │   │   │   ├─ [301] ReentrantRefundReceiver::receive{value: 1000000000000000000}()
+    │   │   │   │   │   └─ ← [Stop]
+    │   │   │   │   └─ ← [Stop]
+    │   │   │   └─ ← [Stop]
+    │   │   └─ ← [Stop]
+    │   └─ ← [Stop]
+    ├─ [497] VulnerableRefundEscrow::credits(0x00000000000000000000000000000000000A11cE) [staticcall]
+    │   └─ ← [Return] 4000000000000000000 [4e18]
+    └─ ← [Revert] INVARIANT_BROKEN: underbacked credits
+
+Backtrace:
+  at VulnerableSolvencyCounterexample.test_invariantBalanceCoversCreditsAfterRefund
+
+Suite result: FAILED. 0 passed; 1 failed; 0 skipped; finished in 665.40µs (294.50µs CPU time)
+
+Ran 1 test suite in 7.69ms (665.40µs CPU time): 0 tests passed, 1 failed, 0 skipped (1 total tests)
+
+Failing tests:
+Encountered 1 failing test in counterexamples/VulnerableSolvency.t.sol:VulnerableSolvencyCounterexample
+[FAIL: INVARIANT_BROKEN: underbacked credits] test_invariantBalanceCoversCreditsAfterRefund() (gas: 540293)
+
+Encountered a total of 1 failing tests, 0 tests succeeded
+
+Tip: Run `forge test --rerun` to retry only the 1 failed test

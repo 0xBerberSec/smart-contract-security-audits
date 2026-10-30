@@ -18,4 +18,6 @@ A control case asks whether the alternative order legitimately rejects or pays o
 
 This illustrates state-machine reasoning and counter-tests. The underlying harness and results are withheld; no specific reward protocol is claimed vulnerable or safe. This page describes a method; it is not independently verifiable execution evidence.
 
+For a separate executable teaching example of the workflow, see the [Refund Escrow lab](../educational-demos/refund-escrow/README.md). It is independent of this withheld study.
+
 [All investigation overviews](README.md) · [Testing approach](../research-tools-testing/testing.md) · [Portfolio](../README.md)

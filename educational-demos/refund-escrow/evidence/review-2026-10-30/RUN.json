@@ -1,0 +1,69 @@
+{
+  "review_date": "2026-10-30",
+  "captured_at_utc": "2026-10-30T02:42:39.690636+00:00",
+  "artifact_type": "Original educational demonstration of a known vulnerability class",
+  "overall_experiment": "PASS",
+  "error": null,
+  "platform": {
+    "system": "Windows",
+    "architecture": "AMD64"
+  },
+  "compiler": "Solc 0.8.24, pinned in foundry.toml",
+  "evm": "paris",
+  "seed": "0x0000000000000000000000000000000000000000000000000000000000000005",
+  "library_dependencies": [],
+  "rpc_or_production_transactions": false,
+  "steps": [
+    {
+      "name": "toolchain",
+      "command": "forge --version",
+      "profile": "default",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "redacted_home_path_occurrences": 0
+    },
+    {
+      "name": "format",
+      "command": "forge fmt --check",
+      "profile": "default",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "redacted_home_path_occurrences": 0
+    },
+    {
+      "name": "build",
+      "command": "forge build",
+      "profile": "default",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "redacted_home_path_occurrences": 0
+    },
+    {
+      "name": "default-suite",
+      "command": "forge test -vvv",
+      "profile": "default",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "redacted_home_path_occurrences": 0
+    },
+    {
+      "name": "intentional-counterexample",
+      "command": "forge test --match-contract VulnerableSolvencyCounterexample -vvv",
+      "profile": "counterexample",
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "redacted_home_path_occurrences": 0
+    }
+  ],
+  "execution_input_sha256": {
+    "src/RefundEscrow.sol": "90cb7b1190cafefa820f368f258c6dd239712583aeeef477380492ad7fd56fef",
+    "test/FixedInvariant.t.sol": "30d960ef3be3190ad523780386a344eb17653dd28e5740c29d237ae4850cdfec",
+    "test/helpers/InvariantTargeting.sol": "84555746f50c32861935d8440103997775fdbe22a112c87f4eef3b976f031449",
+    "test/helpers/RefundReceivers.sol": "5258794b9e68c244b3a2d0d5b0b4cb48ffe5702b86a8205575629bc671ced6cc",
+    "test/helpers/TestSupport.sol": "520238b535959ac0dc51271b4af6fb18dfb04d426db757e9695bf05bfce67e86",
+    "test/RefundEscrow.t.sol": "2c06f6dfbddc7947cb67a1a3d6b9c0ccd97d31e14bb754de017b559630c2011e",
+    "counterexamples/VulnerableSolvency.t.sol": "e796a49f543421d129bf8060b310bef78a29c3f42ddfceb25b4c1c34227f77fc",
+    "scripts/reproduce.py": "3c4601179b8d3ad8c89b4661ab91a9a8f37e17a5308874dc43a9dca8c57143d7",
+    "foundry.toml": "b4dd096283668698830583d87ebda9ff63ae18980a18106c9f1225512df9eee5"
+  }
+}

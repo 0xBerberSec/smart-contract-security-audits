@@ -13,7 +13,7 @@ I investigate DeFi accounting, authorization boundaries and state transitions, u
 | --- | --- |
 | What has been independently validated? | [Injective Peggy Bridge — official result](validated-findings/injective-peggy-bridge/README.md) |
 | How do I conduct an audit? | [Audit methodology](methodology/README.md) and [research workflow](methodology/workflow.md) |
-| What technical material can I inspect here? | [Evidence register](docs/EVIDENCE.md) and [reproduction status](reproducible-pocs/README.md) |
+| What technical material can I inspect here? | [Runnable educational lab](educational-demos/refund-escrow/README.md), [actual results](educational-demos/refund-escrow/EVIDENCE.md) and [evidence register](docs/EVIDENCE.md) |
 | How do I evaluate difficult hypotheses? | [Investigation overviews](protocol-investigations/README.md) |
 | Which tools and techniques do I use? | [Research tools and testing](research-tools-testing/README.md) |
 
@@ -25,23 +25,37 @@ I begin with the system’s assets, actors and dependencies. I reconstruct the a
 
 Audit-OS keeps the protocol maps, hypotheses, test artifacts, traces and conclusions connected. Scripts and Codex assist research and test preparation. Their output becomes evidence only through source inspection and appropriate technical checks. [Detailed methodology](methodology/README.md).
 
+## Reproduce the method
+
+[**Refund Escrow — executable educational investigation**](educational-demos/refund-escrow/README.md): original teaching source, a solvency invariant, a bounded callback experiment, economic controls, a checks-effects-interactions fix and regression tests. The captured run has **13 passing tests**, including two 256-case fuzz tests and a fixed-version invariant over **8,192 handler calls**. A separate safety-property test deliberately fails on the vulnerable version, with the actual trace retained.
+
+This example was prepared with Codex assistance on 30 October 2026. It demonstrates a known vulnerability class in a new synthetic protocol; it is not a newly discovered third-party vulnerability or an externally validated finding. No RPC or wallet is required. [Code](educational-demos/refund-escrow/src/RefundEscrow.sol) · [Tests](educational-demos/refund-escrow/test/RefundEscrow.t.sol) · [Results and limits](educational-demos/refund-escrow/EVIDENCE.md).
+
+```sh
+cd educational-demos/refund-escrow
+python scripts/reproduce.py
+```
+
+Requires Foundry on PATH and Python 3.10+. The runner checks the passing suite and the specific intentional safety-property failure, then writes a new local evidence folder.
+
 ## Selected work
 
 | Material | Evidence and disclosure status |
 | --- | --- |
 | [Injective Peggy Bridge](validated-findings/injective-peggy-bridge/README.md) | Official competition outcome; technical finding body and PoC not supplied |
+| [Refund Escrow lab](educational-demos/refund-escrow/README.md) | New educational artifact with actual local tests, counterexample and fixed-version evidence; no third-party finding credit |
 | [Accounting models and measured value](protocol-investigations/accounting-models.md) | Generic method overview drawn from research; underlying technical study withheld |
 | [Reward lifecycle and state transitions](protocol-investigations/reward-lifecycle.md) | Generic method overview; no protocol-specific reproduction published |
 | [Time-dependent execution boundaries](protocol-investigations/temporal-state.md) | Generic method overview; local experiments do not establish live impact |
 | [Economic controls and hypothesis rejection](protocol-investigations/economic-counter-tests.md) | Generic method overview; no private exploit details or test results disclosed |
 
-The four overviews explain reasoning, rather than serve as public technical case reports. This release contains no runnable protocol PoC. Local test success, historical observations and external validation are separate evidence classes; [the evidence policy](docs/SEVERITY_AND_CLAIMS.md) defines them. LayerZero and Jupiter are not claimed as individually platform-validated findings.
+The four overviews explain reasoning, rather than serve as public technical case reports. The runnable lab is explicitly educational; private third-party protocol PoCs remain withheld. Local test success, historical observations and external validation are separate evidence classes; [the evidence policy](docs/SEVERITY_AND_CLAIMS.md) defines them. LayerZero and Jupiter are not claimed as individually platform-validated findings.
 
 ## Portfolio sections
 
 - [Validated Findings](validated-findings/README.md)
 - [Independent Security Research](independent-security-research/README.md)
-- [Reproducible PoCs](reproducible-pocs/README.md)
+- [Reproducible PoCs and educational demonstrations](reproducible-pocs/README.md)
 - [Protocol Investigation Case Studies](protocol-investigations/README.md)
 - [Audit Methodology](methodology/README.md)
 - [Research Tools & Testing](research-tools-testing/README.md)

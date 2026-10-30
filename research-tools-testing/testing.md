@@ -26,6 +26,6 @@ Use a baseline and an appropriate control. Vary ordering or permissions, trace a
 
 ## Available public examples
 
-The [investigation overviews](../protocol-investigations/README.md) explain this reasoning without exposing private test bodies. [No runnable protocol reproduction is included](../reproducible-pocs/README.md). Historical execution records are not replaced by invented fresh runs for this repository reorganization.
+The [educational lab](../educational-demos/refund-escrow/README.md) demonstrates this reasoning with executable original code and [actual outputs](../educational-demos/refund-escrow/EVIDENCE.md). The [investigation overviews](../protocol-investigations/README.md) remain generic descriptions of private third-party work; no private test bodies or protocol exploit are released. Historical results are never relabeled as new executions.
 
 [Methodology](../methodology/README.md) · [Evidence classes](../docs/SEVERITY_AND_CLAIMS.md) · [Portfolio](../README.md)

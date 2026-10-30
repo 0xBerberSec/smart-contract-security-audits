@@ -18,4 +18,6 @@ A useful control compares the recomputed identity and the reported metric under 
 
 This illustrates accounting decomposition and bounded negative-result analysis. It does not provide a protocol-specific formula, claim a reproduced vulnerability or establish a protocol’s general safety. This page describes a method; it is not independently verifiable execution evidence.
 
+For a separate executable teaching example of the workflow, see the [Refund Escrow lab](../educational-demos/refund-escrow/README.md). It is independent of this withheld study.
+
 [All investigation overviews](README.md) · [Testing approach](../research-tools-testing/testing.md) · [Portfolio](../README.md)
