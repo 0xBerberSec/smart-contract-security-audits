@@ -81,7 +81,7 @@ class RunnerTests(unittest.TestCase):
         outside = Path(self.temp.name) / "external evidence with spaces"
         code, _ = self.invoke(outside)
         self.assertEqual(code, 0)
-        self.assertEqual(json.loads(self.outputs.getvalue())["output"], str(outside))
+        self.assertTrue(Path(json.loads(self.outputs.getvalue())["output"]).samefile(outside))
         self.assertTrue((outside / "RUN.json").is_file())
 
     def test_existing_directory_preserves_evidence_and_uses_unique_children(self):
