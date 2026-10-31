@@ -44,6 +44,7 @@ Requires Foundry on PATH and Python 3.10+. The runner checks the passing suite a
 | --- | --- |
 | [Injective Peggy Bridge](validated-findings/injective-peggy-bridge/README.md) | Official competition outcome; technical finding body and PoC not supplied |
 | [Refund Escrow lab](educational-demos/refund-escrow/README.md) | New educational artifact with actual local tests, counterexample and fixed-version evidence; no third-party finding credit |
+| [Mezo independent research](protocol-investigations/mezo-independent-research.md) | Real-protocol fork investigations: [Pool reserve/quote checks](protocol-investigations/mezo-pool-fuzz.md) and [Router execution boundaries](protocol-investigations/mezo-universal-router.md); bounded results, no exploitable vulnerability claimed |
 | [Accounting models and measured value](protocol-investigations/accounting-models.md) | Generic method overview drawn from research; underlying technical study withheld |
 | [Reward lifecycle and state transitions](protocol-investigations/reward-lifecycle.md) | Generic method overview; no protocol-specific reproduction published |
 | [Time-dependent execution boundaries](protocol-investigations/temporal-state.md) | Generic method overview; local experiments do not establish live impact |
@@ -60,6 +61,10 @@ The four overviews explain reasoning, rather than serve as public technical case
 - [Audit Methodology](methodology/README.md)
 - [Research Tools & Testing](research-tools-testing/README.md)
 - [Code4rena Track Record](code4rena-track-record/README.md)
+
+### Mezo — Independent Protocol Security Research
+
+Selected private-to-public-safe summaries cover Pool bounded fuzzing and UniversalRouter permission boundaries. These studies distinguish historical transcripts from fresh reproductions and do not claim a confirmed Mezo vulnerability or client audit. [Read the Mezo research overview](protocol-investigations/mezo-independent-research.md).
 
 ## Collaboration
 
