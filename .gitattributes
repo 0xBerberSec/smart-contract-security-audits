@@ -1,0 +1,5 @@
+# Preserve executable-input bytes for formatting and evidence hashes on every OS.
+/educational-demos/refund-escrow/**/*.sol text eol=lf
+/educational-demos/refund-escrow/**/*.py text eol=lf
+/educational-demos/refund-escrow/foundry.toml text eol=lf
+/.github/workflows/*.yml text eol=lf

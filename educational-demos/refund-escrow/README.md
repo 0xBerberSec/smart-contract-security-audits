@@ -43,7 +43,20 @@ For a cross-platform replay that checks both the passing suite and the specific 
 python scripts/reproduce.py
 ```
 
-The [runner](scripts/reproduce.py) creates a new timestamped evidence directory without overwriting prior results. It pins the seed, removes inherited Foundry/Dapp environment overrides, checks each exit code and verifies that the counterexample really failed at the intended assertion. `--forge` can select an existing Forge binary. Timing and gas may vary by toolchain/platform.
+The [runner](scripts/reproduce.py) requires the recorded Forge 1.7.1 release and checks the effective compiler, profiles, seed, fuzz/invariant budgets and both 256-case fuzz results. It removes inherited Foundry/Dapp overrides, checks each exit code and the exact counterexample failure reason. `--forge` can select an existing Forge binary. Timing and gas may vary by platform.
+
+`--output` accepts a path relative to this lab, or an absolute path outside the repository. Quote paths containing spaces. A missing directory is created; an existing directory receives a new unique `run-*` child, preserving all previous files. An existing file is rejected before Forge runs. With no option, a unique directory is created under `evidence/`.
+
+```sh
+python scripts/reproduce.py --output "evidence/local review"
+python -B -m unittest discover -s scripts/tests -v
+```
+
+The Python regression tests mock Forge output to check orchestration, paths and rejection conditions. They are separate from the 13 real Foundry tests and do not prove Solidity behavior.
+
+The repository's [attributes](../../.gitattributes) keep the lab's Solidity, Python and TOML files in LF even with Windows `core.autocrlf=true`. This preserves formatting and byte-level hashes. For an older checkout already converted to CRLF, use a fresh clone after the attributes change is published; do not overwrite local research to refresh files.
+
+[CI configuration and execution status](CI.md) describes the proposed Linux/Windows checks. A prepared workflow is not evidence of a successful GitHub run.
 
 ## Evidence boundaries
 

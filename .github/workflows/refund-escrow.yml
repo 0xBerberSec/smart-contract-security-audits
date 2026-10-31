@@ -1,0 +1,50 @@
+name: Refund Escrow reproduction
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    name: Reproduce on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    defaults:
+      run:
+        shell: bash
+        working-directory: educational-demos/refund-escrow
+    steps:
+      - name: Checkout public source
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - name: Install pinned Foundry release
+        uses: foundry-rs/foundry-toolchain@dba66c27052e63476d886f22216e119ba7e615bf # v1
+        with:
+          version: v1.7.1
+          cache: false
+      - name: Test Python runner regressions (mocked Forge)
+        run: python -B -m unittest discover -s scripts/tests -v
+      - name: Format, compile, fuzz, invariant and intentional counterexample
+        run: python -B scripts/reproduce.py --output "${{ runner.temp }}/refund-escrow-evidence"
+      - name: Retain local execution outputs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: refund-escrow-${{ matrix.os }}
+          path: ${{ runner.temp }}/refund-escrow-evidence/
+          if-no-files-found: warn
+          retention-days: 7
