@@ -2,6 +2,8 @@
 
 Evidence class: **fresh local execution of a deliberately vulnerable educational artifact**. This is separate from externally validated findings and historical third-party research.
 
+These original records were captured with the initial runner at portfolio commit `6623be6ae2e396856a375f7f112510ea17354140`. The runner and its regression tests have since changed; their new SHA-256 values are expected to differ. The seven Solidity files and `foundry.toml` are unchanged. Preserve these historical records; a new replay writes a separate record of the current inputs. See [CI status and reproduction changes](CI.md).
+
 The captured run used Windows AMD64, Forge **1.7.1** (commit `4072e48705af9d93e3c0f6e29e93b5e9a40caed8`), Solc **0.8.24**, Paris EVM, optimizer 200 runs and the seed recorded in [foundry.toml](foundry.toml). There are no third-party Solidity dependencies, forks, wallet keys, RPC calls or production transactions. Python only orchestrates the local commands and records evidence.
 
 | Actual command | Exit code | Observed outcome | Output |
