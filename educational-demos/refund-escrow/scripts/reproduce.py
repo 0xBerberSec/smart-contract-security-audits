@@ -19,6 +19,12 @@ SEED = "0x0000000000000000000000000000000000000000000000000000000000000005"
 FUZZ_TESTS = ("testFuzz_fixedPreservesBacking", "testFuzz_vulnerableCanBreakBacking")
 
 
+def redact_home_paths(text):
+    return re.subn(
+        r"(?i)[A-Z]:[\\/]+Users[\\/]+[^\\/\s]+|/(?:home|Users)/[^/\s]+", "<HOME>", text
+    )
+
+
 def reserve_output(root, requested):
     """Reserve a new directory atomically; never reuse prior evidence."""
     target = (root / requested).resolve() if requested else root / "evidence"
@@ -101,11 +107,6 @@ def main(argv=None):
     env["NO_COLOR"] = "1"
     env["FOUNDRY_FUZZ_SEED"] = SEED
     inputs = {}
-    for folder in ["src", "test", "counterexamples", "scripts"]:
-        for path in sorted((ROOT / folder).rglob("*")):
-            if path.suffix in {".sol", ".py"}:
-                inputs[path.relative_to(ROOT).as_posix()] = hashlib.sha256(path.read_bytes()).hexdigest()
-    inputs["foundry.toml"] = hashlib.sha256((ROOT / "foundry.toml").read_bytes()).hexdigest()
     steps = []
     configs = {}
 
@@ -123,9 +124,7 @@ def main(argv=None):
             )
             if not result.returncode:
                 configs[profile] = json.loads(text)
-        text, redacted = re.subn(
-            r"(?i)[A-Z]:[\\/]+Users[\\/]+[^\\/\s]+|/(?:home|Users)/[^/\s]+", "<HOME>", text
-        )
+        text, redacted = redact_home_paths(text)
         (output / (name + ".txt")).write_text(text, encoding="utf-8")
         steps.append({
             "name": name, "command": "forge " + " ".join(argv), "profile": profile,
@@ -139,6 +138,11 @@ def main(argv=None):
     status = "FAILED"
     error = None
     try:
+        for folder in ["src", "test", "counterexamples", "scripts"]:
+            for path in sorted((ROOT / folder).rglob("*")):
+                if path.suffix in {".sol", ".py"}:
+                    inputs[path.relative_to(ROOT).as_posix()] = hashlib.sha256(path.read_bytes()).hexdigest()
+        inputs["foundry.toml"] = hashlib.sha256((ROOT / "foundry.toml").read_bytes()).hexdigest()
         version = run("toolchain", ["--version"])
         if not re.search(r"\bVersion:\s*" + re.escape(FORGE_VERSION) + r"\b", version) or FORGE_COMMIT not in version:
             raise RuntimeError("Forge version/commit differs from the recorded 1.7.1 release")
@@ -158,14 +162,14 @@ def main(argv=None):
             raise RuntimeError("Counterexample did not execute its one safety test")
         status = "PASS"
     except Exception as exc:
-        error = str(exc)
+        error, _ = redact_home_paths(str(exc))
     now = datetime.datetime.now(datetime.timezone.utc)
     record = {
         "review_date": now.date().isoformat(), "captured_at_utc": now.isoformat(),
         "artifact_type": "Original educational demonstration of a known vulnerability class",
         "overall_experiment": status, "error": error,
         "platform": {"system": platform.system(), "architecture": platform.machine()},
-        "compiler": "Solc 0.8.24; effective configuration checked",
+        "compiler": "Solc 0.8.24 required; see effective_config for verified settings",
         "evm": "paris", "seed": SEED, "library_dependencies": [],
         "rpc_or_production_transactions": False, "effective_config": configs,
         "steps": steps, "execution_input_sha256": inputs,

@@ -154,5 +154,35 @@ class RunnerTests(unittest.TestCase):
         self.assertIn("solc", record["error"])
 
 
+    def test_timeout_error_redacts_home_paths(self):
+        paths = (
+            r"C:\Users\AuditSynthetic\bin\forge.exe",
+            "/home/AuditSynthetic/bin/forge",
+            "/Users/AuditSynthetic/bin/forge",
+        )
+        for index, path in enumerate(paths):
+            with self.subTest(path=path):
+                failure = subprocess.TimeoutExpired([path, "--version"], 300)
+                with patch.object(self, "fake_forge", side_effect=failure):
+                    output = f"timeout-{index}"
+                    code, _ = self.invoke(output)
+                self.assertEqual(code, 1)
+                record = json.loads((self.root / output / "RUN.json").read_text())
+                self.assertEqual(record["overall_experiment"], "FAILED")
+                self.assertNotIn("AuditSynthetic", record["error"])
+                self.assertIn("<HOME>", record["error"])
+
+    def test_missing_configuration_produces_failed_record_without_forge(self):
+        (self.root / "foundry.toml").unlink()
+        code, calls = self.invoke("missing-config")
+        self.assertEqual(code, 1)
+        calls.assert_not_called()
+        record = json.loads((self.root / "missing-config/RUN.json").read_text())
+        self.assertEqual(record["overall_experiment"], "FAILED")
+        self.assertIn("foundry.toml", record["error"])
+        self.assertEqual(record["steps"], [])
+        self.assertEqual(record["effective_config"], {})
+
+
 if __name__ == "__main__":
     unittest.main()
