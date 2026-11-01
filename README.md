@@ -12,11 +12,13 @@ I investigate DeFi accounting, authorization boundaries and state transitions, u
 | Question | Read |
 | --- | --- |
 | What has been independently validated? | [Injective Peggy Bridge — official result](validated-findings/injective-peggy-bridge/README.md) |
-| How have I applied the method to a real protocol? | [Mezo research](protocol-investigations/mezo-independent-research.md), [Pool](protocol-investigations/mezo-pool-fuzz.md), [UniversalRouter](protocol-investigations/mezo-universal-router.md) and [local reproduction](protocol-investigations/mezo-reproduction/README.md) |
+| How have I applied the method to a real protocol? | [Mezo — current evidence and reproduction](protocol-investigations/mezo-reproduction/supplemental/README.md), [Solidity test source](protocol-investigations/mezo-reproduction/supplemental/test/MezoEvidenceControls.t.sol) and [research overview](protocol-investigations/mezo-independent-research.md) |
 | How do I conduct an audit? | [Audit methodology](methodology/README.md) and [research workflow](methodology/workflow.md) |
 | What technical material can I inspect here? | [Runnable educational lab](educational-demos/refund-escrow/README.md), [actual results](educational-demos/refund-escrow/EVIDENCE.md) and [evidence register](docs/EVIDENCE.md) |
 | How do I evaluate difficult hypotheses? | [Investigation overviews](protocol-investigations/README.md) |
 | Which tools and techniques do I use? | [Research tools and testing](research-tools-testing/README.md) |
+
+**Mezo — current evidence (1 November 2026):** Foundry tests on a historical local fork recorded 60 checked quotes (48 positive), 1,024 fixed-state fuzz cases with six checked quotes per case, and exact Router errors. Old UniversalRouter London PASS labels came from `NotActivated`, not the intended checks; the dated correction preserves the initial experiments. No confirmed exploitable economic vulnerability is claimed.
 
 ## My audit approach
 
@@ -65,7 +67,7 @@ The four overviews explain reasoning, rather than serve as public technical case
 
 ### Mezo — Independent Protocol Security Research
 
-Selected private-to-public-safe summaries cover Pool fixed-state quote checks and Router rejection evidence. These studies distinguish historical transcripts from fresh reproductions and do not claim a confirmed Mezo vulnerability or client audit. [Read the Mezo research overview](protocol-investigations/mezo-independent-research.md).
+The [Pool study](protocol-investigations/mezo-pool-fuzz.md) and [UniversalRouter study](protocol-investigations/mezo-universal-router.md) explain the research and its limits. The [historical harness](protocol-investigations/mezo-reproduction/README.md) preserves the initial experiments; use the current evidence linked in **Start here** for the complementary controls.
 
 ## Collaboration
 
@@ -74,5 +76,3 @@ Available for **paid, scoped private audit collaborations** and technical evalua
 Contact: [GitHub](https://github.com/0xBerberSec) · [Code4rena](https://code4rena.com/@0xBerberSec)
 
 [Disclosure policy](docs/DISCLOSURE.md) · [Evidence register](docs/EVIDENCE.md) · [Repository navigation](docs/INDEX.md)
-
-**Mezo evidence correction — 1 November 2026:** the old UniversalRouter London PASS labels came from `NotActivated`, not the intended validation checks. See the [correction and complementary exact-error controls](protocol-investigations/mezo-reproduction/supplemental/README.md). The historical tests remain unchanged.

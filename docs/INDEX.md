@@ -7,7 +7,7 @@
 | Independent Security Research | [Scope and limits](../independent-security-research/README.md) |
 | Reproducible PoCs | [Availability and requirements](../reproducible-pocs/README.md) |
 | Protocol Investigation Case Studies | [Real-protocol cases and method overviews](../protocol-investigations/README.md) |
-| Mezo independent research | [Overview](../protocol-investigations/mezo-independent-research.md), [Pool](../protocol-investigations/mezo-pool-fuzz.md), [UniversalRouter](../protocol-investigations/mezo-universal-router.md), [reproduction harness](../protocol-investigations/mezo-reproduction/README.md) |
+| Mezo independent research | [Current evidence and reproduction](../protocol-investigations/mezo-reproduction/supplemental/README.md), [Solidity test source](../protocol-investigations/mezo-reproduction/supplemental/test/MezoEvidenceControls.t.sol), [overview](../protocol-investigations/mezo-independent-research.md), [Pool](../protocol-investigations/mezo-pool-fuzz.md), [UniversalRouter](../protocol-investigations/mezo-universal-router.md), [preserved initial experiments](../protocol-investigations/mezo-reproduction/README.md) |
 | Educational demonstration | [Runnable Refund Escrow lab](../educational-demos/refund-escrow/README.md), [actual results](../educational-demos/refund-escrow/EVIDENCE.md) |
 | Audit Methodology | [Approach](../methodology/README.md), [workflow](../methodology/workflow.md), [validation](../methodology/validation.md) |
 | Research Tools & Testing | [Tools](../research-tools-testing/README.md), [testing](../research-tools-testing/testing.md) |

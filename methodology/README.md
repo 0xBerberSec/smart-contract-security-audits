@@ -46,6 +46,10 @@ The [original Refund Escrow lab](../educational-demos/refund-escrow/README.md) m
 
 ## Public evidence
 
-The [Injective result](../validated-findings/injective-peggy-bridge/README.md) is the externally verified outcome presented here. The investigation overviews explain methods without disclosing the underlying private technical evidence; they do not imply those techniques produced the Injective finding. Detailed third-party studies and runnable protocol exploits remain withheld pending disclosure review; the independently created teaching example is available above.
+The [Injective result](../validated-findings/injective-peggy-bridge/README.md) is the externally verified outcome presented here. The generic investigation overviews explain methods without disclosing their underlying private technical evidence; they do not imply those techniques produced the Injective finding.
+
+Selected [Mezo case studies](../protocol-investigations/mezo-independent-research.md), Solidity test sources, runners, reproduction instructions and documented results are public. Start with the [current complementary evidence](../protocol-investigations/mezo-reproduction/supplemental/README.md); the [historical harness](../protocol-investigations/mezo-reproduction/README.md) preserves the initial experiments. These are bounded independent protocol experiments, not a confirmed third-party exploit or a Mezo security certification. The educational lab above remains a separate synthetic example.
+
+Other research dossiers, findings not authorized for disclosure, confidential evidence and experiments not cleared for publication remain private. No runnable third-party protocol exploit is supplied.
 
 [Research workflow](workflow.md) · [Finding validation](validation.md) · [Research tools](../research-tools-testing/README.md) · [Portfolio](../README.md)
