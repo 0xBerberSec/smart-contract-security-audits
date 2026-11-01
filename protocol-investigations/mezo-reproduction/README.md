@@ -67,3 +67,11 @@ The Router test contains public token identifiers and public on-chain addresses 
 - Despite the suite/test names, these checks do not establish funded slippage enforcement, pre-transfer rejection ordering, callback safety, allowance safety or residual-balance security. No user loss, profit or permissionless extraction was demonstrated.
 
 The source is published to let reviewers inspect these limitations directly. A passing harness is not a finding, an endorsement of the protocol or proof of all production behavior.
+
+## Correction and complementary tests — 1 November 2026
+
+**The historical UniversalRouter tests under London returned PASS because the calls halted with `NotActivated`. They did not establish the intended deadline/invalid-command mechanisms.** Their files and results above remain unchanged. The high gas values are not production swap-cost estimates.
+
+Use the separate [complementary reproduction guide](supplemental/README.md) for measured quote coverage and exact Router errors. Its configuration and runner are deliberately separate from this historical project: eight substantive controls plus one logger PASS locally under Cancun; the same controls expose two failures under London. Four historical upstream read-only calls corroborate the selected UniversalRouter outcomes. This does not establish complete historical hardfork or native-precompile equivalence.
+
+The historical accounting comment about an unavailable BTC ERC20 selector describes a failed local read, not the network: upstream `balanceOf` succeeds at this block. The new tests verify asset identity explicitly and qualify the minimum LP holder check. No old assertion or reference result was changed.

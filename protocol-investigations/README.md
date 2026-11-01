@@ -8,7 +8,7 @@ This section contains authorized real-protocol case studies and separate generic
 - [Mezo UniversalRouter — Authorization, Deadlines and Execution Controls](mezo-universal-router.md)
 - [Mezo overview](mezo-independent-research.md) and [minimal reproduction harness](mezo-reproduction/README.md)
 
-Mezo experiments use a historical local fork and bounded assertions. No confirmed exploitable Mezo finding is claimed. The harness documents conditional quote checks, low-level rejection checks and their limits.
+Mezo experiments use a historical local fork and bounded assertions. No confirmed exploitable Mezo finding is claimed. The historical harness retains conditional quotes and low-level rejections. A [dated correction and complementary harness](mezo-reproduction/supplemental/README.md) explain UniversalRouter `NotActivated`, measured quote coverage and exact error controls without changing the original files.
 
 ## Generic methodological overviews
 
