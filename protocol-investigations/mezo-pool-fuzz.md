@@ -33,4 +33,6 @@ The harness and its base were copied unchanged into an isolated Foundry project.
 
 Despite its name, `MezoPoolBoundedStatefulFuzz` performs randomized read-only quotes against fixed state; it is not a stateful handler campaign. Inputs select a Pool, swap direction and amount bounded by the input reserve. The output assertion is conditional on a successful quote; reverted quotes are not failures in this harness. A separate deterministic test checks zero-input quotes.
 
-The transcripts and input hashes are retained privately. The public repository does not ship the Mezo reproduction harness or hosted Mezo CI. The separate [Refund Escrow CI](../educational-demos/refund-escrow/CI.md) covers the educational lab only.
+The [selected test sources, Foundry configuration and reproduction runner](mezo-reproduction/README.md) are available for local replay, subject to a compatible historical Mezo RPC and the recorded toolchain. The [sanitized reference record](mezo-reproduction/evidence/reference-run.json) provides selected environment, result and input-hash information. Raw historical transcripts and the complete research dossier remain private; the reference record is not an independently verified execution transcript.
+
+The published harness retains the fixed-state quote checks described above: 1,024 randomized quote cases are not a complete stateful campaign. No hosted Mezo CI is claimed. The separate [Refund Escrow CI](../educational-demos/refund-escrow/CI.md) covers the educational lab only.

@@ -26,6 +26,10 @@ Use a baseline and an appropriate control. Vary ordering or permissions, trace a
 
 ## Available public examples
 
-The [educational lab](../educational-demos/refund-escrow/README.md) demonstrates this reasoning with executable original code and [actual outputs](../educational-demos/refund-escrow/EVIDENCE.md). The [investigation overviews](../protocol-investigations/README.md) remain generic descriptions of private third-party work; no private test bodies or protocol exploit are released. Historical results are never relabeled as new executions.
+- **Educational executable example:** [Refund Escrow](../educational-demos/refund-escrow/README.md), with original synthetic contracts and [actual outputs](../educational-demos/refund-escrow/EVIDENCE.md).
+- **Public real-protocol case studies:** [Mezo](../protocol-investigations/mezo-independent-research.md), with selected Pool and Router local-fork experiments and a [minimal reproduction harness](../protocol-investigations/mezo-reproduction/README.md). Quote assertions are conditional; Router assertions check low-level rejection, not its exact internal cause.
+- **Private third-party investigations:** selected [generic overviews](../protocol-investigations/README.md#generic-methodological-overviews) explain reasoning while underlying sensitive dossiers remain withheld.
+
+Historical results and fresh clean-copy executions are labeled separately. These examples do not establish a confirmed exploitable Mezo finding or certify protocol security.
 
 [Methodology](../methodology/README.md) · [Evidence classes](../docs/SEVERITY_AND_CLAIMS.md) · [Portfolio](../README.md)

@@ -1,0 +1,75 @@
+{
+  "captured_at_utc": "2026-10-31T05:07:36.535799+00:00",
+  "platform": "Windows",
+  "overall": "PASS",
+  "suites": [
+    {
+      "suite": "MezoPoolBoundedStatefulFuzz",
+      "command": "forge test --fork-url http://127.0.0.1:8546 --fork-block-number 12674080 --match-contract ^MezoPoolBoundedStatefulFuzz$ --fuzz-runs 1024 --fuzz-seed 0x0000000000000000000000000000000000000000000000000000000000000005 -vv",
+      "exit_code": 0,
+      "expected_tests": [
+        "testFuzzQuoteBounded"
+      ],
+      "status": "PASS"
+    },
+    {
+      "suite": "MezoPoolAccountingInvariants",
+      "command": "forge test --fork-url http://127.0.0.1:8546 --fork-block-number 12674080 --match-contract ^MezoPoolAccountingInvariants$ --fuzz-runs 1024 --fuzz-seed 0x0000000000000000000000000000000000000000000000000000000000000005 -vv",
+      "exit_code": 0,
+      "expected_tests": [
+        "testNoFreeOutputFromZeroInputReadPath",
+        "testReservesCoveredByTokenBalancesAndSupply"
+      ],
+      "status": "PASS"
+    },
+    {
+      "suite": "MezoRouterSlippageAndDeadline",
+      "command": "forge test --fork-url http://127.0.0.1:8546 --fork-block-number 12674080 --match-contract ^MezoRouterSlippageAndDeadline$ --fuzz-runs 1024 --fuzz-seed 0x0000000000000000000000000000000000000000000000000000000000000005 -vv",
+      "exit_code": 0,
+      "expected_tests": [
+        "testEmptyPathRejected",
+        "testExpiredDeadlineRejectedBeforeTransfer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "suite": "MezoUniversalRouterFork",
+      "command": "forge test --fork-url http://127.0.0.1:8546 --fork-block-number 12674080 --match-contract ^MezoUniversalRouterFork$ --fuzz-runs 1024 --fuzz-seed 0x0000000000000000000000000000000000000000000000000000000000000005 -vv",
+      "exit_code": 0,
+      "expected_tests": [
+        "testExpiredDeadlineRejected",
+        "testInvalidCommandRejected"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "fork": {
+    "block": 12674080,
+    "chain_id": 31612,
+    "hash": "0x202a0c344bdf6230ba40ec63b09a9dc51de8342a58844fc1f202b7f36ed5f913",
+    "timestamp": 1792630823
+  },
+  "public_transactions_sent_by_runner": 0,
+  "source_sha256": {
+    "test/MezoPoolAccountingInvariants.t.sol": "d62b6cefeed9be826f6dd326b5d58cc7601ab2d728a4523242c5bac0189736ee",
+    "test/MezoPoolBoundedStatefulFuzz.t.sol": "87b188aa92a540342ec5a4dcab6f6dcdf45ccc12ed2072c5fcc97bf39342625a",
+    "test/MezoPoolForkBase.sol": "cb80808b53268319927a188b86da3654c75856cd7f173c3551117e7d78270f9c",
+    "test/MezoRouterSlippageAndDeadline.t.sol": "115c0f7517813ab35775a0b2605a10cd0691a9f08ef431a42b6620ff8e1be5af",
+    "test/MezoUniversalRouterFork.t.sol": "48c97ff201b692ea0d7ee123fa85a05601483e9b50c5f59f3683afc826919084",
+    "scripts/reproduce.py": "0d8f1f0b085007490e23fa786205a477e31f309e56ce12bf17c661f09779a749",
+    "foundry.toml": "b26710f6908951c55f2b74c1293e290e9d51d6073b3789cfba264bd2ff0effd3"
+  },
+  "limits": [
+    "fixed-state conditional quote assertions",
+    "Router checks only low-level failure"
+  ],
+  "forge_version": "forge Version: 1.7.1\nCommit SHA: 4072e48705af9d93e3c0f6e29e93b5e9a40caed8\nBuild Timestamp: 2026-05-08T07:54:39.315067700Z (1778226879)\nBuild Profile: dist\n",
+  "anvil_version": "anvil Version: 1.7.1\nCommit SHA: 4072e48705af9d93e3c0f6e29e93b5e9a40caed8\nBuild Timestamp: 2026-05-08T07:54:39.315067700Z (1778226879)\nBuild Profile: dist\n",
+  "effective_config": {
+    "solc": "0.8.24",
+    "evm_version": "london",
+    "ffi": false,
+    "test": "test",
+    "src": "src"
+  }
+}
