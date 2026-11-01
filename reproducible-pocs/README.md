@@ -21,3 +21,7 @@ The recorded results are one Pool quote fuzz test with 1,024 runs, two Pool acco
 The existing [Refund Escrow CI](../educational-demos/refund-escrow/CI.md) covers the educational lab only and does not constitute hosted Mezo CI. Officially validated outcomes remain in the separate [validated findings](../validated-findings/README.md) section. Raw private research transcripts are not treated as public execution evidence.
 
 [Testing approach](../research-tools-testing/testing.md) · [Evidence register](../docs/EVIDENCE.md) · [Portfolio](../README.md)
+
+### Mezo correction — 1 November 2026
+
+The old two UniversalRouter London PASS labels came from `NotActivated` and do not validate their intended functional checks. The [separate complementary harness](../protocol-investigations/mezo-reproduction/supplemental/README.md) supplies non-vacuous quote coverage, exact errors and a positive empty execution under a qualified Cancun profile, plus historical RPC corroboration for four selected calls. It is not a published exploit or a full stateful invariant campaign.

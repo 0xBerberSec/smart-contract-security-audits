@@ -65,7 +65,7 @@ The four overviews explain reasoning, rather than serve as public technical case
 
 ### Mezo — Independent Protocol Security Research
 
-Selected private-to-public-safe summaries cover Pool bounded fuzzing and UniversalRouter permission boundaries. These studies distinguish historical transcripts from fresh reproductions and do not claim a confirmed Mezo vulnerability or client audit. [Read the Mezo research overview](protocol-investigations/mezo-independent-research.md).
+Selected private-to-public-safe summaries cover Pool fixed-state quote checks and Router rejection evidence. These studies distinguish historical transcripts from fresh reproductions and do not claim a confirmed Mezo vulnerability or client audit. [Read the Mezo research overview](protocol-investigations/mezo-independent-research.md).
 
 ## Collaboration
 
@@ -74,3 +74,5 @@ Available for **paid, scoped private audit collaborations** and technical evalua
 Contact: [GitHub](https://github.com/0xBerberSec) · [Code4rena](https://code4rena.com/@0xBerberSec)
 
 [Disclosure policy](docs/DISCLOSURE.md) · [Evidence register](docs/EVIDENCE.md) · [Repository navigation](docs/INDEX.md)
+
+**Mezo evidence correction — 1 November 2026:** the old UniversalRouter London PASS labels came from `NotActivated`, not the intended validation checks. See the [correction and complementary exact-error controls](protocol-investigations/mezo-reproduction/supplemental/README.md). The historical tests remain unchanged.

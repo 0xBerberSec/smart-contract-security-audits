@@ -1,0 +1,236 @@
+{
+  "record_class": "Self-recorded local execution and selected historical read-only RPC simulations; no external validation",
+  "date": "2026-11-01",
+  "historical_base": "936fe4be51b915c50f94c7ab55fd92ea537269d5",
+  "fork": {
+    "block": 12674080,
+    "chain_id": 31612,
+    "block_hash": "0x202a0c344bdf6230ba40ec63b09a9dc51de8342a58844fc1f202b7f36ed5f913",
+    "timestamp": 1792630823
+  },
+  "foundry": "forge Version: 1.7.1\nCommit SHA: 4072e48705af9d93e3c0f6e29e93b5e9a40caed8\nBuild Timestamp: 2026-05-08T07:54:39.315067700Z (1778226879)\nBuild Profile: dist\n",
+  "evm_local": "cancun",
+  "full_historical_evm_equivalence": "NOT_ESTABLISHED",
+  "result": {
+    "validated_pass": true,
+    "pass_names": [
+      "testFuzzMaterialQuotesAllPairs",
+      "testNativeIdentityAndMinimumLpHolder",
+      "testQuoteGridCoverage",
+      "testRouterExactDeadlineAndPath",
+      "testRouterExactSlippageWithQuoteControl",
+      "testUniversalRouterDiagnostic",
+      "testUniversalRouterExactErrors",
+      "testUniversalRouterPositiveEmptyExecution",
+      "testVolatileQuoteMonotonicity"
+    ],
+    "failure_names": [],
+    "reported_counts": [
+      [
+        "9",
+        "0",
+        "0"
+      ]
+    ],
+    "substantive_functions": 8,
+    "logging_only_functions": 1
+  },
+  "source_sha256": {
+    "foundry.toml": "ba58dfd9ffe76f13d3af00a0e82930600d67d37fe5ef0dad387bbc902aa0bb6a",
+    "test/MezoEvidenceControls.t.sol": "2b5f5f59741fef48c238fec396c2f77f263e7a34b2679ae8d23c722d750ffeca"
+  },
+  "quote_grid": {
+    "calls": 60,
+    "success": 60,
+    "rejected": 0,
+    "invalid": 0,
+    "positive_outputs": 48
+  },
+  "quote_fuzz": {
+    "cases": 1024,
+    "calls_per_case": 6,
+    "asserted_quote_calls": 6144,
+    "stateful_handler": false,
+    "seed": "0x0000000000000000000000000000000000000000000000000000000000000001"
+  },
+  "historical_london_correction": "Old UniversalRouter PASS labels resulted from NotActivated, not intended checks. Historical files/results preserved.",
+  "upstream_historical_calls": [
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 6,
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x000000000000000000000000000000000000dead",
+            "to": "0xd97576d5fed11c7c31095d4fd0af612dc736679b",
+            "gas": "0x7a120",
+            "value": "0x0",
+            "data": "0x3593564c00000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000080ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "0xc16420"
+        ]
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 6,
+        "result": "0x"
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 7,
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x000000000000000000000000000000000000dead",
+            "to": "0xd97576d5fed11c7c31095d4fd0af612dc736679b",
+            "gas": "0x7a120",
+            "value": "0x0",
+            "data": "0x3593564c00000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "0xc16420"
+        ]
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 7,
+        "error": {
+          "code": 3,
+          "message": "execution reverted",
+          "data": "0x5bf6f916"
+        }
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 8,
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x000000000000000000000000000000000000dead",
+            "to": "0xd97576d5fed11c7c31095d4fd0af612dc736679b",
+            "gas": "0x7a120",
+            "value": "0x0",
+            "data": "0x3593564c000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000a0ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "0xc16420"
+        ]
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 8,
+        "error": {
+          "code": 3,
+          "message": "execution reverted",
+          "data": "0xff633a38"
+        }
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 9,
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x000000000000000000000000000000000000dead",
+            "to": "0xd97576d5fed11c7c31095d4fd0af612dc736679b",
+            "gas": "0x7a120",
+            "value": "0x0",
+            "data": "0x3593564c000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000a0ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00000000000000000000000000000000000000000000000000000000000000013f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "0xc16420"
+        ]
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 9,
+        "error": {
+          "code": 3,
+          "message": "execution reverted",
+          "data": "0xd76a1e9e000000000000000000000000000000000000000000000000000000000000003f"
+        }
+      }
+    }
+  ],
+  "upstream_caller": "Explicit identical caller 0x000000000000000000000000000000000000dead; differs from Foundry harness address",
+  "public_transactions": 0,
+  "confirmed_exploitable_findings": 0,
+  "privacy": "No endpoint, credentials, private economic fixture, protocol exploit or personal path included",
+  "limits": [
+    "Eight asserted functions plus one logger, not nine independent security invariants",
+    "Runtime error agreement for four calls does not establish full historical EVM equivalence",
+    "No funded successful swap, callback safety or general allowance/residual-balance proof"
+  ],
+  "quote_paths": [
+    {
+      "pool": "0x52e604c44417233b6CcEDDDc0d640A405Caacefb",
+      "reverse": false,
+      "success": 10,
+      "rejected": 0,
+      "invalid": 0,
+      "positive": 9
+    },
+    {
+      "pool": "0x52e604c44417233b6CcEDDDc0d640A405Caacefb",
+      "reverse": true,
+      "success": 10,
+      "rejected": 0,
+      "invalid": 0,
+      "positive": 7
+    },
+    {
+      "pool": "0xEd812AEc0Fecc8fD882Ac3eccC43f3aA80A6c356",
+      "reverse": false,
+      "success": 10,
+      "rejected": 0,
+      "invalid": 0,
+      "positive": 9
+    },
+    {
+      "pool": "0xEd812AEc0Fecc8fD882Ac3eccC43f3aA80A6c356",
+      "reverse": true,
+      "success": 10,
+      "rejected": 0,
+      "invalid": 0,
+      "positive": 7
+    },
+    {
+      "pool": "0x10906a9E9215939561597b4C8e4b98F93c02031A",
+      "reverse": false,
+      "success": 10,
+      "rejected": 0,
+      "invalid": 0,
+      "positive": 7
+    },
+    {
+      "pool": "0x10906a9E9215939561597b4C8e4b98F93c02031A",
+      "reverse": true,
+      "success": 10,
+      "rejected": 0,
+      "invalid": 0,
+      "positive": 9
+    }
+  ],
+  "runner_sha256": "df025ae5402babbe4d545d914a20d12174d1a8492e9c026c36f74c13f5bd3c61",
+  "anvil_backend_hardfork": "cancun",
+  "historical_hardfork_evidence": {
+    "release": "https://github.com/mezo-org/mezod/releases/tag/v7.0.0",
+    "announced_upgrade_block": 7691500,
+    "interpretation": "Supports Cancun-level opcode relevance before fixture; complete standard-EVM/precompile equivalence remains unproven"
+  },
+  "raw_runtime_isolation": {
+    "same_code_same_calldata_same_caller": true,
+    "london_terminal_pc": 176,
+    "london_terminal_opcode": "PUSH0",
+    "london_error": "NotActivated",
+    "cancun_empty_execution_succeeded": true,
+    "caller": "0x000000000000000000000000000000000000dead",
+    "gas": 500000,
+    "upstream_matches": 4,
+    "independent_provider": false
+  }
+}

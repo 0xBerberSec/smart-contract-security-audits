@@ -27,7 +27,7 @@ Use a baseline and an appropriate control. Vary ordering or permissions, trace a
 ## Available public examples
 
 - **Educational executable example:** [Refund Escrow](../educational-demos/refund-escrow/README.md), with original synthetic contracts and [actual outputs](../educational-demos/refund-escrow/EVIDENCE.md).
-- **Public real-protocol case studies:** [Mezo](../protocol-investigations/mezo-independent-research.md), with selected Pool and Router local-fork experiments and a [minimal reproduction harness](../protocol-investigations/mezo-reproduction/README.md). Quote assertions are conditional; Router assertions check low-level rejection, not its exact internal cause.
+- **Public real-protocol case studies:** [Mezo](../protocol-investigations/mezo-independent-research.md), with selected Pool and Router local-fork experiments and a [minimal reproduction harness](../protocol-investigations/mezo-reproduction/README.md). The historical quote assertions are conditional, and old UniversalRouter London PASS labels were traced to `NotActivated`. Separate [complementary controls](../protocol-investigations/mezo-reproduction/supplemental/README.md) measure successful quotes and verify exact errors in an explicitly qualified execution environment.
 - **Private third-party investigations:** selected [generic overviews](../protocol-investigations/README.md#generic-methodological-overviews) explain reasoning while underlying sensitive dossiers remain withheld.
 
 Historical results and fresh clean-copy executions are labeled separately. These examples do not establish a confirmed exploitable Mezo finding or certify protocol security.

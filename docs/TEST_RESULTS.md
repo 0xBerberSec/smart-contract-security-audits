@@ -36,3 +36,19 @@ See the [reproduction guide](../protocol-investigations/mezo-reproduction/README
 The case-study pages describe the initial disclosure snapshot in which source hashes and harnesses were withheld. The selected public harness is a later evidence addition; its guide and reference record update that availability statement while preserving the original conclusions.
 
 [Portfolio](../README.md)
+
+## Mezo evidence correction — 1 November 2026
+
+The historical UniversalRouter London tests above genuinely returned PASS, but traces show **`NotActivated` for both calls**. They do not demonstrate the intended deadline/command checks. The source and historical results are preserved.
+
+| Separate complementary experiment | Result | Limit |
+| --- | --- | --- |
+| Quote grid: three Pools × two directions × ten inputs | 60 valid successes, 48 positive outputs, zero rejected/invalid | Fixed historical state; dust/zero outputs retained |
+| Material-input quote fuzz | 1,024 cases × six asserted successful calls = 6,144 calls | Not independent stateful sequences or guaranteed distinct inputs |
+| Ordinary Router | Exact deadline/path/minimum-output errors, positive quote control, balances/allowance unchanged | No funded successful-swap positive control |
+| Full complementary suite, Cancun | 9 PASS, 0 FAIL, 0 skipped; eight asserted functions plus one logger | Local compatible-opcode EVM |
+| Same suite, London | 7 PASS, 2 FAIL | Retained diagnostic failures; not a protocol finding |
+| Historical upstream UniversalRouter simulations | Empty execution succeeds; three exact errors match | Four read-only calls, not public transactions or a full historical EVM specification |
+| Offline runner validation | 8 unit tests PASS; missing RPC returns BLOCKED/nonzero | Parser/privacy checks only; no Mezo execution |
+
+The [complementary guide](../protocol-investigations/mezo-reproduction/supplemental/README.md) documents the domain, assertions, commands, hashes and environment distinction. No confidential economic fixture is included. Confirmed exploitable Mezo findings remain zero. The existing Refund Escrow CI is unchanged and does not run these Mezo fork experiments.
