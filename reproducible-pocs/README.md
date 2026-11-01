@@ -8,8 +8,16 @@ The [actual local run](../educational-demos/refund-escrow/EVIDENCE.md) records 1
 
 ## Third-party protocol research
 
-No runnable third-party protocol exploit is supplied. Independent research code and historical artifacts remain private until source provenance and disclosure rights are established. A local test or an older public narrative is not external acceptance or permission to disclose.
+No runnable third-party protocol exploit is supplied. Selected authorized Mezo boundary tests are available below; other independent research code and historical artifacts remain private unless source provenance and disclosure rights support release. A local test or an older public narrative is not external acceptance or permission to disclose.
 
 An authorized future reproduction should preserve the exact source revision and patch, dependencies, actors, fixture changes, assertions, controls, result, economic limits and disclosure basis. Historical results stay separate from fresh executions.
+
+## Mezo — Reproducible Real-Protocol Boundary Tests
+
+The [Mezo harness](../protocol-investigations/mezo-reproduction/README.md) supplies selected Pool and Router test sources, Foundry configuration, a local-fork runner and a [sanitized reference record](../protocol-investigations/mezo-reproduction/evidence/reference-run.json). It uses historical block 12674080, chain ID 31612 and the documented toolchain. Reproduction requires a compatible historical Mezo RPC; no wallet or public transaction is required.
+
+The recorded results are one Pool quote fuzz test with 1,024 runs, two Pool accounting tests and four Router boundary tests. The fuzzer reads fixed state; Router assertions primarily check low-level rejection without identifying the exact internal cause. These are bounded experiments, not an exhaustive security proof or a published third-party exploit. No confirmed exploitable Mezo vulnerability is claimed.
+
+The existing [Refund Escrow CI](../educational-demos/refund-escrow/CI.md) covers the educational lab only and does not constitute hosted Mezo CI. Officially validated outcomes remain in the separate [validated findings](../validated-findings/README.md) section. Raw private research transcripts are not treated as public execution evidence.
 
 [Testing approach](../research-tools-testing/testing.md) · [Evidence register](../docs/EVIDENCE.md) · [Portfolio](../README.md)

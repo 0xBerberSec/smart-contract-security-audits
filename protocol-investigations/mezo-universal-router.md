@@ -25,4 +25,6 @@ These assertions check only `!ok`, not a specific revert selector or trace locat
 
 The Router suite name mentions slippage, but these two reproduced tests do not exercise a funded swap or minimum-output enforcement. Callbacks, reentrancy, allowance theft and residual recovery were research questions; the reproduced tests do not establish their safety. No actual user-funded residual loss was demonstrated.
 
-**No confirmed exploitable vulnerability was established by these experiments.** Raw execution evidence remains private; no public executable Mezo reproduction or hosted Mezo CI is claimed.
+**No confirmed exploitable vulnerability was established by these experiments.** The [selected test sources and runner](mezo-reproduction/README.md) support local replay with a compatible historical Mezo RPC. The [sanitized reference record](mezo-reproduction/evidence/reference-run.json) reports selected results and input hashes. Raw private transcripts are not presented as published evidence, and no hosted Mezo CI is claimed.
+
+Source availability does not strengthen the original assertions: the tests primarily check `!ok`, not the exact internal revert cause. They do not demonstrate a complete funded swap, slippage enforcement or economic exploit. Reviewers can inspect these limits directly in the selected harness.

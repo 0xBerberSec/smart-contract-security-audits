@@ -12,6 +12,7 @@ I investigate DeFi accounting, authorization boundaries and state transitions, u
 | Question | Read |
 | --- | --- |
 | What has been independently validated? | [Injective Peggy Bridge — official result](validated-findings/injective-peggy-bridge/README.md) |
+| How have I applied the method to a real protocol? | [Mezo research](protocol-investigations/mezo-independent-research.md), [Pool](protocol-investigations/mezo-pool-fuzz.md), [UniversalRouter](protocol-investigations/mezo-universal-router.md) and [local reproduction](protocol-investigations/mezo-reproduction/README.md) |
 | How do I conduct an audit? | [Audit methodology](methodology/README.md) and [research workflow](methodology/workflow.md) |
 | What technical material can I inspect here? | [Runnable educational lab](educational-demos/refund-escrow/README.md), [actual results](educational-demos/refund-escrow/EVIDENCE.md) and [evidence register](docs/EVIDENCE.md) |
 | How do I evaluate difficult hypotheses? | [Investigation overviews](protocol-investigations/README.md) |

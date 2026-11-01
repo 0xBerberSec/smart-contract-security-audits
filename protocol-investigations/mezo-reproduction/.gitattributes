@@ -1,0 +1,4 @@
+# Keep reviewed source hashes stable on Windows and POSIX.
+test/*.sol text eol=lf
+scripts/*.py text eol=lf
+foundry.toml text eol=lf
