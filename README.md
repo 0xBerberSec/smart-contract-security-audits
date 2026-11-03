@@ -25,6 +25,7 @@ I investigate DeFi accounting, authorization boundaries and state transitions, u
 **Value Flow → Security Invariants → Targeted Tests → Counter-Tests → Economic Impact Qualification**
 
 I begin with the system’s assets, actors and dependencies. I reconstruct the accounting and state transitions, select a concrete hypothesis, and test the relevant property with explicit setup and assertions. I then test competing explanations: expected behavior, privileged actions, configuration assumptions, prior findings and the actual source of any apparent gain.
+The selected [GMX cross-architecture research case study](protocol-investigations/gmx-cross-architecture-security-research.md) applies this method across EVM and Solana research while preserving explicit evidence limits.
 
 Audit-OS keeps the protocol maps, hypotheses, test artifacts, traces and conclusions connected. Scripts and Codex assist research and test preparation. Their output becomes evidence only through source inspection and appropriate technical checks. [Detailed methodology](methodology/README.md).
 

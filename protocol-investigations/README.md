@@ -7,6 +7,7 @@ This section contains authorized real-protocol case studies and separate generic
 - [Mezo Pool — Reserve Invariants and Bounded Fuzzing](mezo-pool-fuzz.md)
 - [Mezo UniversalRouter — Authorization, Deadlines and Execution Controls](mezo-universal-router.md)
 - [Mezo overview](mezo-independent-research.md) and [minimal reproduction harness](mezo-reproduction/README.md)
+- [GMX - Cross-Architecture DeFi Security Research](gmx-cross-architecture-security-research.md)
 
 Mezo experiments use a historical local fork and bounded assertions. No confirmed exploitable Mezo finding is claimed. The historical harness retains conditional quotes and low-level rejections. A [dated correction and complementary harness](mezo-reproduction/supplemental/README.md) explain UniversalRouter `NotActivated`, measured quote coverage and exact error controls without changing the original files.
 
