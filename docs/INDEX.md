@@ -19,3 +19,5 @@
 Earlier audit-record paths remain available for link continuity: [Injective](../audits/injective-peggy-bridge/README.md), [LayerZero](../audits/layerzero-stellar-endpoint/README.md), [Jupiter](../audits/jupiter-lend-qa/README.md), [GMX](../audits/gmx-disabled-integration-relay-bypass/README.md), [Origin](../audits/origin-accounting/README.md).
 
 These records do not turn unresolved independent or QA research into official findings. Technical material at disclosure hold is not included in the release selection.
+
+The current GMX case study is available directly here: [GMX Cross-Architecture DeFi Security Research](../protocol-investigations/gmx-cross-architecture-security-research.md).
