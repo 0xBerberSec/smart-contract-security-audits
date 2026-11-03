@@ -15,6 +15,7 @@
 
 - [LayerZero Stellar Endpoint PoC](../audits/layerzero-stellar-endpoint/PoC.md)
 - [GMX Disabled Integration Relay Bypass PoC](../audits/gmx-disabled-integration-relay-bypass/PoC.md)
+- [GMX Cross-Architecture DeFi Security Research](../protocol-investigations/gmx-cross-architecture-security-research.md)
 
 ## Research Standards
 

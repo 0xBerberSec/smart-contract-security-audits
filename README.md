@@ -26,6 +26,7 @@ Focused on DeFi, cross-chain security, invariant analysis, and proof-of-concept 
 | --- | --- | --- | --- |
 | Jupiter Lend | Code4rena QA Report | Public QA Research | [Report](./audits/jupiter-lend-qa/README.md) |
 | GMX Synthetics | Independent Security Research | Public independent research | [Report](./audits/gmx-disabled-integration-relay-bypass/README.md) |
+| GMX cross-architecture research | Independent Security Research | EVM, Solana and evidence-driven validation | [Case study](./protocol-investigations/gmx-cross-architecture-security-research.md) |
 
 ## Repository Structure
 
@@ -39,6 +40,8 @@ audits/
   gmx-disabled-integration-relay-bypass/
     README.md
     PoC.md
+protocol-investigations/
+  gmx-cross-architecture-security-research.md
 docs/
   INDEX.md
   METHODOLOGY.md
