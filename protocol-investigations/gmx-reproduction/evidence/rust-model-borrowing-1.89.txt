@@ -1,0 +1,16 @@
+$ cargo +1.89 test --locked stale_regular_borrowing_update_consumes_closed_duration -- --nocapture
+   Compiling gmsol-model v0.11.0 (public-harness/solana/model)
+    Finished `test` profile
+     Running unittests src/lib.rs
+
+running 1 test
+rwa stale-open borrowing: regular_factor=10, closed_factor=1000, duration_secs=21600, stale_factor=108000, correct_closed_factor=10800000, missed_factor=10692000, missed_fee_value=641520000
+after later update: stale_after_second_update=216000, correct_closed_factor=10800000
+test test::rwa_timing_tests::stale_regular_borrowing_update_consumes_closed_duration ... ok
+
+test result: ok. 1 passed; 0 failed; 37 filtered out
+[exit 0]
+
+The workspace path in the compiler transcript was redacted to keep local
+Windows paths out of the public repository. The command and assertion output
+are unchanged.

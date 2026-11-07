@@ -106,6 +106,16 @@ cargo +1.89 test --locked partial_close_cannot_extract_more_pnl_than_full_close 
 
 Expected recorded result for this snapshot: **FRESH_FAIL, exit code 101**.
 
+The separately named Borrowing model test is:
+
+```text
+cargo +1.89 test --locked stale_regular_borrowing_update_consumes_closed_duration -- --nocapture
+```
+
+It is a different model assertion from Partial Close. Its status must be read
+from the command output; no Borrowing result is inferred from the Partial Close
+transcript.
+
 The raw, path-redacted logs and exit codes are in [evidence](evidence/). The
 public Cargo manifest pins the source-compatible dependency versions; the
 original lock snapshot and the regenerated public lock are both hashed.
@@ -121,6 +131,21 @@ original lock snapshot and the regenerated public lock are both hashed.
 - [Rust model crate](solana/model/src/)
 - [Execution evidence](evidence/)
 - [Provenance and licence notices](THIRD_PARTY_NOTICES.md)
+
+## Evidence status
+
+| Investigation | Type of evidence | Public status |
+|---|---|---|
+| EVM RefundLedger | Educational derivation | 3 PASS |
+| GMX ExternalHandler / OrderVault | Adapted tests on real GMX components | Clean-checkout runner; historical snapshot 4 PASS |
+| GMX original tests | Private original functions and transcripts | 11 PASS, not shipped as executable public tests |
+| Rust Borrowing | Source-preserving model test | `FRESH_MODEL_PASS`, 1 PASS, exit 0 |
+| Rust Partial Close | Source-preserving model invariant | `FRESH_FAIL`, exit 101 |
+| Anchor | Program/fixture execution | `NOT_REPRODUCED` |
+
+Borrowing and Partial Close are different tests and must not be combined. A
+model PASS is not an Anchor or production result; the Partial Close failure is a
+counterexample to the proposed model relation, not a confirmed GMX exploit.
 
 ## Scope and limitations
 
