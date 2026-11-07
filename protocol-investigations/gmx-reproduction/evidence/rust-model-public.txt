@@ -1,0 +1,12 @@
+cargo :     Updating crates.io index
+Au caractère Ligne:2 : 1
++ cargo test --locked partial_close_cannot_extract_more_pnl_than_full_c ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (    Updating crates.io index:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+error: the lock file
+<public-harness>\solana\model\Cargo.lock needs to be
+updated but --locked was passed to prevent this
+If you want to try to generate the lock file without accessing the network, remove the --locked flag and use --offline
+instead.
