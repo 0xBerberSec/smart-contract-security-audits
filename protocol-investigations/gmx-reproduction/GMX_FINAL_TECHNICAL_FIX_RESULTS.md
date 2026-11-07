@@ -32,6 +32,11 @@ The clean Hardhat compilation completed successfully and reported 430 Solidity
 files for this checkout/configuration. This is the fresh-run count and is not
 silently substituted for the earlier private 431-file build metric.
 
+Metric distinction: **historical isolated clean-build: 431 Solidity files**;
+**new clean-checkout reproduction: 430 Solidity files**. They are distinct
+executions/configurations; no causal explanation for the one-file difference
+is asserted here.
+
 Run artifacts are retained outside the repository under the isolated workdir.
 The script's `summary.json` records the pinned commit and both per-file exit
 codes. The script reports PASS only after compilation and both test commands
