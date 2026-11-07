@@ -1,5 +1,9 @@
 # GMX original EVM investigations
 
+Start with the repository-level [clean-checkout runner](../../scripts/reproduce-original-evm.py)
+and [reproduction instructions](REPRODUCTION.md). It is the canonical path for
+the four public adapted tests.
+
 This directory contains two small, reviewable TypeScript adaptations of the
 original GMX Synthetics EVM investigations. The private reproduction executed
 all eleven original Hardhat functions freshly: seven ExternalHandler tests and

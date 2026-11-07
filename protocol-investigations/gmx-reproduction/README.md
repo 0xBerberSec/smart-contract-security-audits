@@ -7,6 +7,42 @@ study](../gmx-cross-architecture-security-research.md). It shows how selected
 security hypotheses were reduced to assertions, counter-controls and
 reproducible local experiments.
 
+## Start with the real GMX tests
+
+### GMX Synthetics EVM — real-contract security tests
+
+These public adaptations execute against the actual GMX Synthetics fixture and
+contracts. They are the fastest way to inspect the protocol-facing work:
+
+- **ExternalHandler / ExchangeRouter:** [external-handler-safe-controls.spec.ts](evm/original-gmx-tests/external-handler-safe-controls.spec.ts) — explicit refund, multicall rollback and post-revert balance assertions.
+- **OrderVault / DepositVault:** [vault-accounting-observations.spec.ts](evm/original-gmx-tests/vault-accounting-observations.spec.ts) — physical ERC-20 balance versus `tokenBalances` and unrelated-user controls.
+- **One-command clean checkout:** [reproduce-original-evm.py](scripts/reproduce-original-evm.py).
+
+Run from the repository root:
+
+```text
+python protocol-investigations/gmx-reproduction/scripts/reproduce-original-evm.py
+```
+
+The runner clones GMX Synthetics, pins commit
+`10cfbce6144ade8e9d5cd8c811573955bcd1c132`, installs its lockfile, compiles,
+copies the two public adaptations and executes four assertions. A PASS is
+printed only after those commands actually complete. The latest clean-checkout
+result is **4 PASS, exit 0**.
+
+### Rust model experiments
+
+- **Borrowing:** [source test](solana/model/src/test.rs) —
+  `stale_regular_borrowing_update_consumes_closed_duration`, **FRESH_MODEL_PASS,
+  exit 0**.
+- **Partial Close:** [source property](solana/model/src/action/decrease_position/mod.rs) —
+  `partial_close_cannot_extract_more_pnl_than_full_close`, **FRESH_FAIL, exit
+  101**. This falsifies a proposed model invariant; it is not a confirmed
+  production vulnerability.
+
+For the exact evidence classification and historical/current split, see the
+[evidence index](evidence/README.md).
+
 ## Research overview
 
 The private campaign covered selected GMX Synthetics EVM, GMX Solana and GMX V1
