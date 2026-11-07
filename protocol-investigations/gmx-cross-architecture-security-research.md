@@ -4,6 +4,8 @@
 
 This is independent security research across selected GMX Synthetics EVM/Solidity, GMX Solana Rust/Anchor, and GMX V1/Solidity surfaces. It is not an official GMX audit, client engagement, certification, or claim of protocol acceptance.
 
+The accompanying [technical reproduction harness](gmx-reproduction/README.md) exposes a sanitized EVM accounting derivation, the source-preserving Rust model test, and their recorded local results.
+
 The campaign’s value is its reasoning chain: value-flow reconstruction, trust-boundary analysis, explicit security properties, targeted experiments, counter-tests, and conservative economic qualification. Thirty-six historical investigation records were retained, but they are not thirty-six vulnerabilities. They include duplicates, expected behavior, model-only observations, fixture-limited behavior, source-limited hypotheses and unresolved questions.
 
 ## Research Scope and Boundaries

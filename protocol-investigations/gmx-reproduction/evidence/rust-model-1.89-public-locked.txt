@@ -1,0 +1,61 @@
+cargo :    Compiling gmsol-model v0.11.0
+(<public-harness>\solana\model)
+Au caractère Ligne:2 : 1
++ cargo +1.89 test --locked partial_close_cannot_extract_more_pnl_than_ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (   Compiling gm...n\solana\model):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+  --> src\action\deposit.rs:66:24
+   |
+66 |     fn reassign_values(&self, is_long_token: bool) -> ReassignedValues<T>
+   |                        ^^^^^                          ------------------- the same lifetime is hidden here
+   |                        |
+   |                        the lifetime is elided here
+   |
+   = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+   = note: `#[warn(mismatched_lifetime_syntaxes)]` on by default
+help: use `'_` for type paths
+   |
+66 |     fn reassign_values(&self, is_long_token: bool) -> ReassignedValues<'_, T>
+   |                                                                        +++
+
+warning: `gmsol-model` (lib) generated 1 warning
+warning: `gmsol-model` (lib test) generated 1 warning (1 duplicate)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.69s
+     Running unittests src\lib.rs (target\debug\deps\gmsol_model-33a7cdd4fc830e5f.exe)
+
+running 1 test
+
+test action::decrease_position::tests::partial_close_cannot_extract_more_pnl_than_full_close ... FAILED
+
+failures:
+
+failures:
+    action::decrease_position::tests::partial_close_cannot_extract_more_pnl_than_full_close
+
+thread 'action::decrease_position::tests::partial_close_cannot_extract_more_pnl_than_full_close' panicked at
+src\action\decrease_position\mod.rs:980:9:
+partial closes paid more capped pnl than full close: max_pnl_factor=1000000000000000000, is_long=true,
+collateral_is_long=true, split_bps=[100, 100, 100, 9700], full=CloseSequenceMetrics {
+    total_pnl: 99959935974400000000000,
+    total_uncapped_pnl: 6000000000000000000000000,
+    total_output_value: 2099959935974400000000000,
+    total_fees: 0,
+    total_price_impact_abs: 0,
+    final_pool_value: 19896033661465600000000000,
+    num_steps: 1,
+}, partial=CloseSequenceMetrics {
+    total_pnl: 102958635123895365744326,
+    total_uncapped_pnl: 6000000000000000000000000,
+    total_output_value: 2102958635123895365744326,
+    total_fees: 0,
+    total_price_impact_abs: 0,
+    final_pool_value: 19893034962316104634255674,
+    num_steps: 4,
+}
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--lib`

@@ -1,0 +1,4 @@
+evm/node_modules/
+evm/artifacts/
+evm/cache/
+solana/model/target/
