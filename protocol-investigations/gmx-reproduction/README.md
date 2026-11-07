@@ -112,6 +112,9 @@ original lock snapshot and the regenerated public lock are both hashed.
 
 ## Source-code navigation
 
+- [Original EVM investigation index](evm/original-gmx-tests/README.md)
+- [ExternalHandler adapted controls](evm/original-gmx-tests/external-handler-safe-controls.spec.ts)
+- [OrderVault accounting observations](evm/original-gmx-tests/vault-accounting-observations.spec.ts)
 - [EVM contract](evm/contracts/RefundLedger.sol)
 - [EVM assertions](evm/test/refund-ledger.spec.ts)
 - [Rust Partial Close property](solana/model/src/action/decrease_position/mod.rs)
