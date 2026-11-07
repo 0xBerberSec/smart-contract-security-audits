@@ -44,6 +44,6 @@ Fresh isolated results for these adaptations were 2 passing / exit 0 each.
 
 ## Private evidence package
 
-The owner can provide the exact source and transcript package for review after
-disclosure approval. The existing public `RefundLedger.sol` remains a separate
-sanitized derivation and is not presented as the original GMX test suite.
+The exact source and transcript package remains private pending disclosure
+approval. The existing public `RefundLedger.sol` remains a separate sanitized
+derivation and is not presented as the original GMX test suite.

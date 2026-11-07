@@ -58,7 +58,7 @@ The EVM code is not the original GMX contract and is not a production exploit
 reproduction. The Rust test is a model-level experiment, not an Anchor or
 deployed-program result.
 
-## Technical capabilities demonstrated
+## Checks implemented
 
 - Translate an asset-accounting hypothesis into explicit state assertions.
 - Pair a positive control with an omitted-asset negative control.
