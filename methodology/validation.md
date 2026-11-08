@@ -9,14 +9,14 @@ I separate four questions:
 
 ## Review sequence
 
-Verify source provenance and fixture fidelity. Read the assertion and execution outcome, checking whether the body ran. Identify the required privileges, configuration and reachable state. Trace the origin and destination of value, run appropriate controls, and examine the strongest counterargument. Compare prior work by cause and version before claiming novelty.
+For each candidate finding, I check the source revision and whether the fixture reflects the behavior under review. I inspect the assertions and execution outcome, including whether the test body ran. I identify required permissions, configuration and reachable state, trace the movement of value, and test alternative explanations. I compare prior work by root cause and version before assessing novelty.
 
 An expected revert, privileged simulation or successful test alone does not establish an exploitable vulnerability. A local proof can be useful while remaining conditional on a mock, source gap or operational assumption.
 
 ## Conclusions
 
-Keep official validation, independent local evidence, historical results, observations, hypotheses, rejected paths and blocked research distinguishable. Submission status and disclosure permission are separate fields. Absence of a submission receipt means status unknown, not never submitted.
+I keep official validation, independent local evidence, historical results, observations, hypotheses, rejected paths and blocked research separate. I record submission status independently from disclosure permission. When I cannot locate a submission receipt, the status remains unknown; I do not assume the submission never existed.
 
-Preserve the rationale for rejection and the condition for reopening. Treat similarity to a known issue as a duplication question to investigate, rather than automatic proof of a duplicate.
+When I reject a hypothesis, I record the counterevidence and what new observation would justify reopening it. Similarity to a known issue prompts a comparison of the underlying cause; it does not automatically establish duplication.
 
 [Evidence classes](../docs/SEVERITY_AND_CLAIMS.md) · [Disclosure policy](../docs/DISCLOSURE.md) · [Portfolio](../README.md)
