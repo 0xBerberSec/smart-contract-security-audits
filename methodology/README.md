@@ -6,7 +6,7 @@ My starting point is the protocol’s economic model. I map how assets and autho
 
 ## 1. Value flow
 
-Establish the scope and source revision. Map entry points, contracts, dependencies, privileged actors and external calls. Trace deposits, withdrawals, claims and other value-moving paths through the components that implement the business logic.
+I establish the scope and source revision, then map entry points, dependencies, privileged actors and external calls. I trace deposits, withdrawals, claims and other value-moving paths through the contracts implementing the relevant logic.
 
 Accounting views need explicit units and meaning: a stored balance, a current estimate and a realizable withdrawal amount may answer different questions. [Accounting overview](../protocol-investigations/accounting-models.md).
 
@@ -14,23 +14,23 @@ Accounting views need explicit units and meaning: a stored balance, a current es
 
 Define what must hold across the relevant states and actors. Examples of properties to examine include value conservation, entitlement consumed at most once, agreement between global and individual accounting, and consistent application of authorization policy.
 
-An invariant guides the review; it is not an executed check until it is bound to concrete code, setup and assertions. Prioritize hypotheses by potential impact, reachability and uncertainty, rather than promoting every suspicious pattern.
+An invariant guides the review, but only a concrete setup and executable assertion can test it. I prioritize hypotheses by impact, reachability and uncertainty rather than treating every unusual pattern as a vulnerability.
 
 ## 3. Targeted tests
 
-Choose the smallest experiment that addresses the hypothesis. Reuse protocol fixtures when appropriate, make actors and dependencies explicit, and retain mocks and privileged setup as limitations. A local fork should identify its block and the actions actually executed.
+I use the smallest experiment that can distinguish the hypothesis from expected behavior. Where practical I reuse the protocol's fixtures, documenting actors, dependencies, mocks and privileged setup. For local forks, I record the block and the actions exercised.
 
-Inspect assertions, before-and-after measurements, traces and state changes. Determine whether the test reached its body and whether PASS means a safety property, an observed anomaly or an expected failure. [Testing approach](../research-tools-testing/testing.md).
+I inspect the assertions, before-and-after values, traces and state transitions. I check that the test reached the intended property and distinguish a passing safety assertion from a test that passes because an anomaly or expected failure occurred. [Testing approach](../research-tools-testing/testing.md).
 
 ## 4. Counter-tests
 
-Test the strongest alternative explanation. Compare the supported flow, expected ordering, remaining permission checks and relevant prior findings. Separate design choices and trusted-role behavior from an attacker-controlled path.
+I test the strongest alternative explanations, including supported execution flows, expected ordering, remaining permission checks and prior findings. Trusted-role behavior and design choices are not treated as attacker-controlled paths.
 
-Record rejected ideas and the condition that would justify reopening them. A negative result is useful when its tested scope and assumptions are clear. [Lifecycle overview](../protocol-investigations/reward-lifecycle.md) · [Temporal-state overview](../protocol-investigations/temporal-state.md).
+I record why an idea was rejected and what new evidence would justify reopening it. Negative results are useful when their scope and assumptions are explicit. [Lifecycle overview](../protocol-investigations/reward-lifecycle.md) · [Temporal-state overview](../protocol-investigations/temporal-state.md).
 
 ## 5. Economic impact qualification
 
-Identify who can act, who loses, who gains and where the value originates. Distinguish a local primitive from a complete exploitation path. State unpriced costs, synthetic state, missing integration steps and uncertain production configuration.
+I identify who can act, who loses, who gains and where the value originates. I distinguish an observed local primitive from a complete exploitation path and record unpriced costs, synthetic state, missing steps and uncertain production configuration.
 
 A demonstrated behavior can remain an observation when its impact is not established. Test success and external acceptance are separate questions. [Economic controls](../protocol-investigations/economic-counter-tests.md) · [Finding validation](validation.md).
 

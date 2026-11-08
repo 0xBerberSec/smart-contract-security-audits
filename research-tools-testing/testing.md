@@ -2,11 +2,11 @@
 
 ## Build the experiment
 
-Start with one property and its concrete state. Identify the contract revision and dependencies, choose actors and privileges, and make each mock or state mutation explicit. Prefer protocol fixtures when they preserve the relevant behavior; a substituted dependency limits the conclusion.
+I start from one security property and the state needed to test it. I pin the relevant contract revision, identify dependencies, and document the actors and permissions. Any mock or manual state change is part of the test setup. I use protocol fixtures when they preserve the behavior being examined; substitutions narrow what the result establishes.
 
 ## Measure execution
 
-Capture the command, environment and relevant inputs. For a fork, record the chain, block and RPC requirements. Compare before-and-after balances and state, and retain the assertion, transaction outcome and useful trace. Local transactions and administrative impersonation must be described as such.
+I record the command, environment and relevant inputs. Fork-based tests identify the chain, block and RPC requirements. I compare balances and state before and after execution, then retain the assertion, transaction outcome and useful traces. Local transactions and administrative impersonation are labeled explicitly.
 
 ## Interpret PASS and FAIL
 
@@ -22,7 +22,7 @@ Capture the command, environment and relevant inputs. For a fork, record the cha
 
 ## Challenge the interpretation
 
-Use a baseline and an appropriate control. Vary ordering or permissions, trace all contributors to an apparent profit, and state what remains unmeasured. Preserve negative results and distinguish a bounded counter-test from a safety guarantee.
+I compare each hypothesis against a baseline and an appropriate control. Where relevant, I vary call ordering or permissions and trace the sources of any apparent profit. I retain negative results with the unmeasured conditions stated explicitly; a bounded counter-test is not a general safety guarantee.
 
 ## Available public examples
 
