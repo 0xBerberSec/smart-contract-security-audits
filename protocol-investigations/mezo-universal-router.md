@@ -1,5 +1,13 @@
 # Mezo UniversalRouter — Authorization, Deadlines and Execution Controls
 
+## Result first
+
+The original London tests returned `PASS` because execution halted at
+`NotActivated`; those labels do not establish the intended command or deadline
+checks. The complementary Cancun-compatible harness reached the selected exact
+errors and preserved balances in its bounded controls. No funded swap or
+permissionless loss was demonstrated.
+
 ## Objective
 
 Determine whether command execution, callbacks, `allowRevert`, deadlines or residual balances could expose funds to an arbitrary caller.

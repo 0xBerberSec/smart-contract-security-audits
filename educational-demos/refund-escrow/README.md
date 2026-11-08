@@ -1,12 +1,16 @@
-# Refund Escrow — an executable audit-method demonstration
+# Refund Escrow — executable reentrancy experiment
 
-**Educational artifact, created with Codex assistance on 30 October 2026.** This is an original teaching protocol containing a deliberately introduced instance of the well-known refund reentrancy pattern. It is independent of private research. It is not a vulnerability discovered in a third-party protocol, a contest finding or production-ready code. Do not deploy it with real funds.
+This is an original teaching protocol with a deliberately introduced refund
+reentrancy pattern. It is independent of private protocol research and is not a
+third-party finding or production deployment. The artifact was prepared with
+Codex assistance; the contribution and verification boundary are recorded in
+[RESEARCH_PROCESS.md](RESEARCH_PROCESS.md).
 
 The runnable experiment connects each stage of my method to code and evidence:
 
 **Value Flow → Security Invariants → Targeted Tests → Counter-Tests → Economic Impact Qualification**
 
-## Start in three minutes
+## Read the experiment
 
 1. Compare the two `refund()` implementations in [RefundEscrow.sol](src/RefundEscrow.sol).
 2. Read the [hypothesis and economic accounting](ANALYSIS.md).
