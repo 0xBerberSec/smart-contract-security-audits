@@ -1,5 +1,12 @@
 # Mezo Pool — Reserve Invariants and Bounded Fuzzing
 
+## Result first
+
+At block `12674080` (chain ID `31612`), the selected harness recorded 60 valid
+quote-grid calls and 1,024 material-input fuzz cases. No counterexample or
+permissionless extraction was observed. These are fixed-state read experiments;
+they do not establish safety for arbitrary swaps or stateful handler sequences.
+
 ## Objective
 
 Check whether quote logic could return more output than the selected reserve or behave inconsistently at zero and boundary inputs.

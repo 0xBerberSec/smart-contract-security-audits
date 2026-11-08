@@ -9,14 +9,12 @@ I investigate DeFi accounting, authorization boundaries and state transitions, u
 
 ## Start here
 
-| Question | Read |
-| --- | --- |
-| What has been independently validated? | [Injective Peggy Bridge — official result](validated-findings/injective-peggy-bridge/README.md) |
-| How have I applied the method to a real protocol? | [Mezo — current evidence and reproduction](protocol-investigations/mezo-reproduction/supplemental/README.md), [Solidity test source](protocol-investigations/mezo-reproduction/supplemental/test/MezoEvidenceControls.t.sol) and [research overview](protocol-investigations/mezo-independent-research.md) |
-| How do I conduct an audit? | [Audit methodology](methodology/README.md) and [research workflow](methodology/workflow.md) |
-| What technical material can I inspect here? | [Runnable educational lab](educational-demos/refund-escrow/README.md), [actual results](educational-demos/refund-escrow/EVIDENCE.md) and [evidence register](docs/EVIDENCE.md) |
-| How do I evaluate difficult hypotheses? | [Investigation overviews](protocol-investigations/README.md) |
-| Which tools and techniques do I use? | [Research tools and testing](research-tools-testing/README.md) |
+- [Validated findings](validated-findings/README.md) — Injective Peggy Bridge and the official Code4rena record.
+- [GMX research and executable harness](protocol-investigations/gmx-reproduction/README.md) — Hardhat tests, Rust model experiments and reproduction commands.
+- [Mezo research and current evidence](protocol-investigations/mezo-reproduction/supplemental/README.md) — Foundry controls on the historical fork.
+- [Methodology](methodology/README.md) — value-flow reconstruction, invariants, targeted tests and counter-tests.
+- [Evidence register](docs/EVIDENCE.md) — claim classes and execution records.
+- [Research tools and testing](research-tools-testing/README.md) — tool-assisted source inspection and verification.
 
 **Mezo — current evidence (1 November 2026):** Foundry tests on a historical local fork recorded 60 checked quotes (48 positive), 1,024 fixed-state fuzz cases with six checked quotes per case, and exact Router errors. Old UniversalRouter London PASS labels came from `NotActivated`, not the intended checks; the dated correction preserves the initial experiments. No confirmed exploitable economic vulnerability is claimed.
 

@@ -14,6 +14,10 @@ The captured run used Windows AMD64, Forge **1.7.1** (commit `4072e48705af9d93e3
 | `forge test -vvv` | 0 | 13 passed, 0 failed, 0 skipped | [Default suite](evidence/review-2026-10-30/default-suite.txt) |
 | `forge test --match-contract VulnerableSolvencyCounterexample -vvv`, with profile `counterexample` | **1, expected** | One executed test fails at `INVARIANT_BROKEN: underbacked credits` | [Trace and failure](evidence/review-2026-10-30/intentional-counterexample.txt) |
 
+The two `format.txt` files are empty because `forge fmt --check` writes no
+diagnostics when formatting is correct; the recorded exit code `0` is the
+result for that check.
+
 The default suite includes two fuzz tests of **256 cases each**, and a stateful fixed-version invariant with **128 runs, 8,192 handler calls and zero handler-level reverts**. The call table reports attack 2,697 / deposit 2,742 / refund 2,753 for this recorded seed and toolchain. Counts include potentially empty refund attempts; they are not a claim of 8,192 distinct economic paths. Expected nested-call rejections are caught inside the receiver and are not counted as top-level handler reverts.
 
 The replay script's overall result is PASS only when the normal suite succeeds **and** the vulnerable counterexample fails for the intended reason. Its failure is not hidden, relabeled as a test pass or included in the 13 passing tests.

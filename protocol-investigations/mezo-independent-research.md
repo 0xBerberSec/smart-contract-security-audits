@@ -2,6 +2,16 @@
 
 This section documents independent research performed against Mezo using an Audit-OS workflow. It is not a client audit, security certification, or externally validated vulnerability report.
 
+## Current result
+
+The published experiments establish bounded local properties on a Mezo fork at
+block `12674080` (chain ID `31612`). Pool quote checks covered 60 valid grid
+calls and 1,024 material-input fuzz cases. Router controls reproduced exact
+negative paths under a Cancun-compatible environment; the earlier London PASS
+labels were traced to `NotActivated`. No permissionless economic exploit was
+demonstrated. The detailed studies below retain the original assertions and
+their limits.
+
 ## What was studied
 
 - AMM Pool reserve/quote accounting and bounded fuzz properties.
