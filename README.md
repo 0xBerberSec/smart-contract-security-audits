@@ -18,6 +18,19 @@ I investigate DeFi accounting, authorization boundaries and state transitions, u
 
 **Mezo — current evidence (1 November 2026):** Foundry tests on a historical local fork recorded 60 checked quotes (48 positive), 1,024 fixed-state fuzz cases with six checked quotes per case, and exact Router errors. Old UniversalRouter London PASS labels came from `NotActivated`, not the intended checks; the dated correction preserves the initial experiments. No confirmed exploitable economic vulnerability is claimed.
 
+## Verified results
+
+The public work is grouped by evidence type so the executable material is visible before the methodology.
+
+| Material | Evidence and disclosure status |
+| --- | --- |
+| [Injective Peggy Bridge](validated-findings/injective-peggy-bridge/README.md) | Official competition outcome; technical finding body and PoC not supplied |
+| [GMX — Cross-Architecture DeFi Security Research](protocol-investigations/gmx-cross-architecture-security-research.md) | Independent EVM and Solana research with [reproducible harness code](protocol-investigations/gmx-reproduction/README.md); no externally confirmed GMX finding claimed |
+| [Mezo independent research](protocol-investigations/mezo-independent-research.md) | Real-protocol fork investigations: [Pool reserve/quote checks](protocol-investigations/mezo-pool-fuzz.md) and [Router execution boundaries](protocol-investigations/mezo-universal-router.md); bounded results, no exploitable vulnerability claimed |
+| [Refund Escrow lab](educational-demos/refund-escrow/README.md) | Educational artifact with local tests, counterexample and fixed-version evidence; no third-party finding credit |
+
+Start with the [GMX harness](protocol-investigations/gmx-reproduction/README.md) for Hardhat, Rust and clean-checkout reproduction commands, or the [Refund Escrow code and tests](educational-demos/refund-escrow/README.md) for a self-contained educational example. Historical executions, local reproductions, model results and external validation remain separate evidence classes; [the evidence policy](docs/SEVERITY_AND_CLAIMS.md) defines them.
+
 ## My audit approach
 
 **Value Flow → Security Invariants → Targeted Tests → Counter-Tests → Economic Impact Qualification**
@@ -40,14 +53,10 @@ python scripts/reproduce.py
 
 Requires Foundry on PATH and Python 3.10+. The runner checks the passing suite and the specific intentional safety-property failure, then writes a new local evidence folder.
 
-## Selected work
+## Additional research overviews
 
-| Material | Evidence and disclosure status |
+| Material | Scope |
 | --- | --- |
-| [Injective Peggy Bridge](validated-findings/injective-peggy-bridge/README.md) | Official competition outcome; technical finding body and PoC not supplied |
-| [Refund Escrow lab](educational-demos/refund-escrow/README.md) | New educational artifact with actual local tests, counterexample and fixed-version evidence; no third-party finding credit |
-| [GMX — Cross-Architecture DeFi Security Research](protocol-investigations/gmx-cross-architecture-security-research.md) | Independent EVM and Solana DeFi security research covering authorization boundaries, economic invariants, Hardhat fixture tests, Rust model validation and evidence-driven hypothesis rejection. [Inspect the reproducible code harness](protocol-investigations/gmx-reproduction/README.md). No externally confirmed GMX finding claimed. |
-| [Mezo independent research](protocol-investigations/mezo-independent-research.md) | Real-protocol fork investigations: [Pool reserve/quote checks](protocol-investigations/mezo-pool-fuzz.md) and [Router execution boundaries](protocol-investigations/mezo-universal-router.md); bounded results, no exploitable vulnerability claimed |
 | [Accounting models and measured value](protocol-investigations/accounting-models.md) | Generic method overview drawn from research; underlying technical study withheld |
 | [Reward lifecycle and state transitions](protocol-investigations/reward-lifecycle.md) | Generic method overview; no protocol-specific reproduction published |
 | [Time-dependent execution boundaries](protocol-investigations/temporal-state.md) | Generic method overview; local experiments do not establish live impact |
