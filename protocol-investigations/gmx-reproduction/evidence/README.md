@@ -25,7 +25,6 @@ for the difference.
 |---|---|---|
 | Earlier Rust public run | `rust-model-public.txt` / `.exitcode` | Historical/blocked lockfile context; not the current Borrowing result |
 | Earlier isolated Rust run | `rust-model-1.89-isolated.txt` / `.exitcode` | Historical trace retained for provenance |
-| Historical Rust lock result | `rust-model-1.89-public-locked.txt` | Current Partial Close failure transcript; not a Borrowing test |
 | Cargo source snapshot | `Cargo.lock.source-snapshot` | Provenance snapshot, not an execution result |
 
 Anchor execution remains `NOT_REPRODUCED`. The private original EVM suite is
