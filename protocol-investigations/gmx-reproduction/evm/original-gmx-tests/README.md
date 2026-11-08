@@ -1,5 +1,9 @@
 # GMX original EVM investigations
 
+Start with the repository-level [clean-checkout runner](../../scripts/reproduce-original-evm.py)
+and [reproduction instructions](REPRODUCTION.md). It is the canonical path for
+the four public adapted tests.
+
 This directory contains two small, reviewable TypeScript adaptations of the
 original GMX Synthetics EVM investigations. The private reproduction executed
 all eleven original Hardhat functions freshly: seven ExternalHandler tests and
@@ -40,6 +44,6 @@ Fresh isolated results for these adaptations were 2 passing / exit 0 each.
 
 ## Private evidence package
 
-The owner can provide the exact source and transcript package for review after
-disclosure approval. The existing public `RefundLedger.sol` remains a separate
-sanitized derivation and is not presented as the original GMX test suite.
+The exact source and transcript package remains private pending disclosure
+approval. The existing public `RefundLedger.sol` remains a separate sanitized
+derivation and is not presented as the original GMX test suite.
