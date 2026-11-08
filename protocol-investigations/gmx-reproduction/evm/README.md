@@ -1,4 +1,13 @@
-# EVM sanitized derivation
+# EVM laboratory (secondary)
+
+The real GMX-facing tests are intentionally presented first in the parent
+[harness README](../README.md) and under
+[original-gmx-tests/](original-gmx-tests/README.md). Use those files when
+reviewing `ExternalHandler`, `ExchangeRouter`, `OrderVault` and `DepositVault`.
+
+This directory contains the smaller, standalone educational derivation used to
+exercise the same accounting questions without redistributing GMX protocol
+code.
 
 The contract and tests here are an independent educational derivation of the
 accounting questions examined in the private ExternalHandler work. They are

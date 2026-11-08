@@ -1,110 +1,131 @@
-# GMX — Cross-Architecture DeFi Security Research: EVM, Solana, Economic Invariants & Evidence-Driven Validation
+# GMX — Cross-Architecture DeFi Security Research
 
-## Executive Summary
+## Scope
 
-This is independent security research across selected GMX Synthetics EVM/Solidity, GMX Solana Rust/Anchor, and GMX V1/Solidity surfaces. It is not an official GMX audit, client engagement, certification, or claim of protocol acceptance.
+I investigated selected GMX Synthetics EVM/Solidity, GMX Solana Rust/Anchor and
+GMX V1/Solidity surfaces. This is independent research, not a client audit,
+certification or claim of GMX acceptance.
 
-The accompanying [technical reproduction harness](gmx-reproduction/README.md) exposes a sanitized EVM accounting derivation, the source-preserving Rust model test, and their recorded local results.
+The accompanying [reproduction harness](gmx-reproduction/README.md) contains
+the public EVM adaptations, the source-preserving Rust model and the execution
+evidence. Private findings, payloads and sensitive fixture sequences remain
+outside the repository.
 
-The campaign’s value is its reasoning chain: value-flow reconstruction, trust-boundary analysis, explicit security properties, targeted experiments, counter-tests, and conservative economic qualification. Thirty-six historical investigation records were retained, but they are not thirty-six vulnerabilities. They include duplicates, expected behavior, model-only observations, fixture-limited behavior, source-limited hypotheses and unresolved questions.
+The archive contains 36 investigation records, not 36 vulnerabilities. It
+includes expected behavior, duplicate hypotheses, fixture-limited observations,
+model-only results, source-limited questions and unresolved items.
 
-## Research Scope and Boundaries
+## Research questions and surfaces
 
-The EVM work examined selected Synthetics mechanisms: subaccounts, integrations, signed approvals, relays, deadlines, external-handler paths, vault balances and interactions between reader logic and state-changing paths. The Solana work focused on Rust model and Anchor-oriented paths involving market state, positions, borrowing/funding clocks and temporal transitions. GMX V1 remained source-limited.
+On EVM I followed subaccounts, integrations, signed approvals, relays,
+deadlines, external-handler calls and vault balances across router and state
+changing paths. I treated users, authorized subaccounts, integrations, keepers,
+vaults, external handlers and configurable roles as separate trust boundaries.
 
-These were targeted investigations, not complete reviews of every deployment, market, integration or configuration. Compiled-file counts are build metrics, not counts of contracts manually audited. Test counts are execution evidence, not vulnerability counts.
+On Solana I examined market state, position lifecycle, borrowing/funding clocks
+and temporal transitions in the Rust model, then compared the model assumptions
+with Anchor-oriented source paths. GMX V1 remained source-limited.
 
-## Architecture and Threat Modeling
+These were targeted investigations, not complete reviews of every deployment,
+market, integration or configuration. File counts are build metrics; test counts
+are execution records, not vulnerability counts.
 
-The threat model began by identifying actors and trust boundaries: position owners, authorized subaccounts, integrations, keepers, vaults, external handlers and configurable administrative roles. For each flow, the question was which authority should authorize a transition and which component ultimately moves value.
+## Method
 
-On EVM, this meant following signed data, nonces, deadlines and integration state across router and subaccount boundaries. It also meant separating an authorization failure from a fixture that preconfigured a privileged role. On Solana, oracle-reported conditions were kept separate from persisted market flags, and model behavior was kept separate from deployed-program behavior.
+For each question I used the following sequence:
 
-## Value Flow and Economic Invariants
+1. Trace assets, actors and the state-changing entry point.
+2. Identify the authorization or accounting boundary.
+3. State a falsifiable invariant.
+4. Build a fixture with explicit positive and negative controls.
+5. Execute the assertion and record the resulting state.
+6. Test competing explanations: roles, mocks, preloaded balances, reverts,
+   rounding, mutable state and configuration.
+7. Separate production behavior from fixture, model and blocked evidence.
 
-Value-flow reconstruction identified assets, holders, accounting variables and state-changing modules before a hypothesis was tested. Candidate invariants covered physical versus accounted balances, fee and collateral conservation, position lifecycle transitions, authorization boundaries and temporal accrual.
+I closed or reclassified hypotheses when the evidence did not support them. A
+passing assertion did not override missing production preconditions; a failed
+model relation was preserved until its assumptions could be examined.
 
-An invariant had to be expressed as a falsifiable assertion and then challenged. A failing relation was not automatically a finding: the comparison might involve mutable state, rounding, configuration or an invalid economic assumption. This discipline was particularly important for model-based position and fee experiments.
+## EVM investigations
 
-## EVM Security Research Methodology
+### Relay and integration boundaries
 
-The EVM investigations combined Solidity source reading, TypeScript/Hardhat tests, fixture inspection and clean-build verification:
+I traced signed approvals, nonces, deadlines and integration state through the
+router/subaccount boundary. Local tests and source history were used to
+distinguish a stored association from an identifier carried in signed data. The
+public conclusion is limited to a design/specification analysis; no
+permissionless production bypass is claimed.
 
-1. Identify the entry point and caller roles.
-2. Trace calls that change permissions, balances or accounting state.
-3. Define positive and negative controls.
-4. Record the exact assertion reached.
-5. Test alternative explanations such as mocks, missing funds, role setup, ABI errors and expected reverts.
-6. Classify the result as production behavior, fixture behavior, model behavior or blocked.
+### ExternalHandler and refund accounting
 
-The Relay work illustrates why source history and design intent matter. Historical local tests reported behavior around disabled integrations, while later review supported a separate association model. The appropriate public conclusion is a specification and integration analysis, not a confirmed production bypass.
+The relevant path crosses `ExchangeRouter`, `ExternalHandler` and
+`PayableMulticall`. The public adaptation
+[`external-handler-safe-controls.spec.ts`](gmx-reproduction/evm/original-gmx-tests/external-handler-safe-controls.spec.ts)
+checks two controls: an explicitly listed refund token is returned and a later
+multicall revert rolls back the earlier transfer. The private seven-test suite
+also examined residual and multi-token paths; those exact sequences remain
+private.
 
-External-handler and OrderVault research examined residual-balance accounting. Clean-build tests reproduced local assertions, but the provenance of residual balances and their relationship to an official production flow remained unproven. A preloaded balance is not, by itself, evidence of theft.
+The tests establish fixture-level balance and rollback properties. They do not
+establish that an untrusted production caller can create the same residual
+state, that a balance belongs to another user, or that funds can be extracted.
 
-## Solana/Rust Model-Based Research
+### OrderVault and internal accounting
 
-Rust model tests examined market state, position lifecycle and accounting clocks. One targeted model test freshly reproduced a bounded borrowing-timing difference under a stale-state precondition. The corresponding Anchor source contains fixture assertions for clock advancement, relative accrual and non-recovery after a later state update.
+I compared physical ERC-20 balances with the vault's internal `tokenBalances`
+accounting across OrderVault and DepositVault flows. The public
+[`vault-accounting-observations.spec.ts`](gmx-reproduction/evm/original-gmx-tests/vault-accounting-observations.spec.ts)
+keeps the non-sensitive balance and unrelated-user controls. The private suite
+contains the complete increase, deposit, GLV and withdrawal continuations.
 
-The model result is classified as `FRESH_MODEL_PASS`, not as a deployed-program exploit. Anchor execution was not freshly reproduced in the final validation because the required CLI and historical validator environment were unavailable; it remains `HISTORICAL_ANCHOR_ONLY` / `BLOCKED_ENVIRONMENT`. A reproducible model can reveal a coherent accounting path without proving production equivalence.
+The observation is local to a deliberately pre-funded fixture. It does not
+prove token provenance, third-party ownership or production loss.
 
-## Testing Infrastructure and Reproducibility
+## Solana model experiments
 
-Evidence engineering was part of the work. Isolated copies, recorded toolchains, clean output directories, build metadata, source hashes and raw transcripts were used where available.
+### Borrowing
 
-A clean isolated Hardhat build compiled 431 Solidity files and then executed 15 targeted tests against newly generated artifacts: four Relay, seven ExternalHandler and four OrderVault tests. These tests validate local fixture assertions only.
+The model test
+`stale_regular_borrowing_update_consumes_closed_duration` compares a stale
+regular borrowing update with the closed-market factor over the same elapsed
+interval. It passes under Rust 1.89 (`FRESH_MODEL_PASS`, exit 0). The output
+records the factors, duration and missed fee calculation. This is a model result,
+not Anchor or deployed-program evidence.
 
-The Rust validation recorded the toolchain, copied the modified research checkout to an isolated workspace and retained the raw Cargo transcript. Missing Anchor/Solana tools were recorded as a blocker rather than converted into a pass.
+### Partial Close
 
-## Evidence Qualification and Counter-Testing
+`partial_close_cannot_extract_more_pnl_than_full_close` compares one full close
+with split closes. The assertion fails under Rust 1.89 (`FRESH_FAIL`, exit 101)
+with concrete PnL and output-value differences. I retained the failure instead
+of changing the tolerance. It falsifies the proposed model relation for the
+fixture; it does not confirm a Solana vulnerability or production loss.
 
-Historical reports, fresh execution and blocked reproduction were kept separate. Evidence classes included `EXPECTED_BEHAVIOR`, `LOCAL_FIXTURE_ONLY`, `MODEL_LIMITED`, `SOURCE_LIMITED` and `HYPOTHESIS_UNVERIFIED`.
+Anchor execution remains `NOT_REPRODUCED`; the required validator environment
+was not part of the final public reproduction.
 
-Counter-tests searched for legitimate permissions, artificial role setup, preloaded balances, mocked feeds, stale configuration, rounding, mutable state and missing economic provenance. This prevented a report title or a green test from outranking the actual assertion and preconditions.
+## Reproduction and evidence
 
-## False-Positive Elimination
+The clean-checkout runner is
+[`reproduce-original-evm.py`](gmx-reproduction/scripts/reproduce-original-evm.py).
+It clones GMX Synthetics at commit
+`10cfbce6144ade8e9d5cd8c811573955bcd1c132`, installs its lockfile, compiles and
+runs the two public adaptations. The verified result is four PASS tests, exit 0.
 
-Several hypotheses were downgraded rather than promoted. Some apparent authorization issues were consistent with documented association flows. Some residual-balance observations depended on fixture state. Some model relations failed without proving that the proposed invariant was valid. Some records lacked source or transcript evidence and remained unverified.
+The historical isolated build compiled 431 Solidity files and ran 15 targeted
+Hardhat tests (4 Relay, 7 ExternalHandler, 4 OrderVault). The newer clean
+checkout compiled 430 files. These are distinct executions/configurations; no
+cause is inferred for the difference.
 
-This is a core audit skill: a security investigation must be able to close a plausible hypothesis when the evidence does not support it.
+The public harness also contains three educational RefundLedger tests (3 PASS),
+the private original EVM result (11 PASS), the Borrowing model PASS, the Partial
+Close model FAIL and the Anchor `NOT_REPRODUCED` status. They are separate
+evidence classes and are not added together as one campaign.
 
-## How the Reasoning Was Applied
+## Conclusions and limits
 
-The investigations were organized as small, reviewable questions rather than as a single undifferentiated search. For an authorization question, the analysis followed the signed intent, the caller, the stored association and the final state change. For an accounting question, it compared the source of a balance with the operation that consumed it. For a temporal question, it recorded which clock advanced, which state flag was persisted and whether a later transition could recover an interval already consumed.
-
-This structure made negative results useful. A revert caused by an invalid path, missing funds or an unactivated feature was not described as proof of a security control. A passing test whose assertion depended on a preloaded balance was retained as a fixture observation, not as proof that production users could create or capture that balance. A model failure was reviewed as a possible specification error, rounding effect or mutable-state artifact before it was considered a protocol anomaly.
-
-The process also required explicit provenance. Source revisions, modified working-tree state, compiler versions, build-info and transcript hashes were recorded when available. Where a historical result could not be independently reproduced, it remained historical. Where an environment was unavailable, it remained blocked. This distinction is important for professional review because reproducibility is not binary: a clean local build, a model test, a fork test and a deployed-program test answer different questions.
-
-## What a Reviewer Can Inspect
-
-An experienced reviewer can use the public case study as a map to the underlying work. The EVM portion demonstrates how a researcher can move from a router or vault entry point to roles, balances, assertions and counter-tests. The Solana portion demonstrates how to state a model result without confusing it with Anchor execution. The evidence section explains why the same green test result has different weight depending on its source, fixture and artifact provenance.
-
-The campaign also illustrates an important audit habit: preserve the failed experiment. The partial-close model relation was not rewritten after an assertion failed. Instead, the failure remained an unresolved question because the one-shot and split sequences mutated state differently. Preserving that uncertainty is more informative than changing the tolerance until the test passes.
-
-## Reusable Engagement Pattern
-
-For a private engagement, this workflow can be reused on a defined module: map assets and actors, identify the trust boundary, write the invariant, construct a minimal fixture, add positive and negative controls, inspect the resulting state transition, and qualify the economic effect. The deliverable should state the exact scope and assumptions, include reproducible commands where authorized, and distinguish a confirmed issue from a lead requiring protocol-owner clarification.
-
-The campaign therefore demonstrates a practical research pattern rather than a promise of universal coverage. It is suitable for targeted reviews of integrations, accounting modules, fee paths, state transitions and property-test suites. It is not evidence that every GMX market, deployment or configuration has been audited.
-
-## Selected Research Metrics
-
-- 36 historical investigation records, not 36 vulnerabilities.
-- Three GMX architectures represented.
-- 431 Solidity files compiled in clean-build validation.
-- 15 targeted local Hardhat tests passed after compilation.
-- Four Relay, seven ExternalHandler and four OrderVault tests.
-- One fresh Rust model Borrowing test.
-- No confirmed permissionless GMX economic finding.
-
-## Disclosure Boundaries
-
-This public study intentionally omits private PoCs, exact payloads, sensitive preconditions, addresses, local paths, raw forensic material and unpublished economic scenarios. Existing public history is not treated as blanket authorization to amplify technical details. Any future disclosure requires human review.
-
-## Professional Research Takeaways
-
-The work demonstrates architecture reconstruction, trust-boundary analysis, invariant design, TypeScript/Hardhat testing, Rust model testing, source/build provenance, counter-testing and economic qualification. The reusable professional capability is targeted DeFi investigation: reconstruct a value flow, formulate a property, build a bounded experiment, challenge it and report only what the evidence supports.
-
-## Limitations and Independent Research Status
-
-This is independent research, not a client audit. Production deployments, all configurations and all historical environments were not exhaustively validated. Anchor reproduction remains blocked; several findings remain private or source-limited. No GMX security certification, official validation or confirmed production exploit is claimed.
+The experiments establish how the selected fixtures, models and controls
+behave. They do not establish complete GMX coverage, production exploitability,
+official validation or user loss. Source revisions, lockfiles, licences,
+transcripts and current/historical classifications are indexed in the
+[harness evidence directory](gmx-reproduction/evidence/README.md).
